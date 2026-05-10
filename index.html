@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lmars Studio — Photography by Lmar Oria</title>
+<meta name="description" content="Photography & video by Lmar Oria — cars, streets, landscapes. Based in San Antonio." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0F1A2E;
+    --bg-deep: #08111F;
+    --bg-card: #16243F;
+    --ink: #F4E9DA;
+    --ink-mute: rgba(244, 233, 218, 0.65);
+    --ink-soft: rgba(244, 233, 218, 0.85);
+    --line: rgba(244, 233, 218, 0.12);
+    --accent: #E8B95C;
+    --accent-2: #6CA9C4;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--ink); font-family: "Inter", sans-serif; -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: smooth; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; background: none; border: 0; cursor: pointer; color: inherit; }
+  ul { list-style: none; }
+
+  .page { max-width: 1440px; margin: 0 auto; }
+
+  /* HEADER */
+  .hdr {
+    display: grid; grid-template-columns: auto 1fr auto; align-items: center;
+    padding: 22px 56px; gap: 32px;
+    border-bottom: 1px solid var(--line);
+    position: sticky; top: 0; background: rgba(15,26,46,0.85); backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 50;
+  }
+  .logo { display: flex; flex-direction: column; line-height: 0.95; font-family: "Fraunces", serif; white-space: nowrap; }
+  .logo-top { font-size: 22px; letter-spacing: -0.02em; }
+  .logo-top em { font-style: italic; color: var(--accent); }
+  .logo-bot { font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-mute); font-family: "Inter", sans-serif; font-weight: 500; margin-top: 4px; }
+  .nav { display: flex; gap: 32px; justify-self: center; font-size: 13px; font-weight: 500; flex-wrap: nowrap; }
+  .nav a { color: var(--ink-soft); transition: color 200ms; position: relative; cursor: pointer; }
+  .nav a.is-active { color: var(--accent); }
+  .nav a:hover { color: var(--accent); }
+  .cta { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 9px 18px; background: var(--accent); color: #0F1A2E; border-radius: 99px; font-weight: 600; transition: transform 200ms; white-space: nowrap; }
+  .cta:hover { transform: translateY(-1px); }
+
+  /* HERO */
+  .hero { position: relative; display: grid; grid-template-columns: 1.05fr 1fr; min-height: 620px; }
+  .hero-text { padding: 72px 56px; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
+  .hero-text::before {
+    content: ""; position: absolute; top: 60px; right: 60px; width: 320px; height: 320px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--accent) 38%, transparent) 0%, transparent 70%);
+    filter: blur(50px); pointer-events: none;
+  }
+  .hero-text::after {
+    content: ""; position: absolute; bottom: 60px; left: 30px; width: 260px; height: 260px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--accent-2) 35%, transparent) 0%, transparent 70%);
+    filter: blur(50px); pointer-events: none;
+  }
+  .eyebrow { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); display: inline-flex; align-items: center; gap: 8px; position: relative; z-index: 1; margin-bottom: 24px; }
+  .eyebrow::before { content: ""; width: 8px; height: 8px; background: #6FAF7C; border-radius: 50%; box-shadow: 0 0 0 4px rgba(111,175,124,0.18); }
+  .hero-title { position: relative; z-index: 1; font-family: "Fraunces", serif; font-weight: 300; font-size: 96px; line-height: 0.94; letter-spacing: -0.025em; margin-bottom: 28px; }
+  .hero-title em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .hero-bio { position: relative; z-index: 1; font-size: 17px; line-height: 1.6; color: var(--ink-soft); max-width: 44ch; margin-bottom: 36px; }
+  .hero-row { position: relative; z-index: 1; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 99px; font-size: 13px; font-weight: 500; transition: transform 200ms; }
+  .pill:hover { transform: translateY(-1px); }
+  .pill--primary { background: var(--accent); color: #0F1A2E; }
+  .pill--ghost { background: transparent; border: 1px solid rgba(244,233,218,0.4); color: var(--ink); }
+  .hero-meta { position: relative; z-index: 1; display: flex; gap: 28px; margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--line); font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-mute); flex-wrap: wrap; }
+  .hero-meta div span { display: block; color: var(--ink); margin-top: 4px; font-family: "Fraunces", serif; font-size: 16px; font-style: italic; }
+
+  .hero-img { position: relative; overflow: hidden; }
+  .hero-img img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-img-meta { position: absolute; left: 24px; bottom: 24px; background: rgba(15,26,46,0.85); color: var(--ink); padding: 10px 16px; border-radius: 99px; font-size: 11px; letter-spacing: 0.06em; display: flex; align-items: center; gap: 10px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+  .hero-img-meta strong { color: var(--accent); font-weight: 600; }
+  .hero-img-meta span { color: var(--ink-mute); }
+
+  /* MARQUEE */
+  .marquee {
+    background: var(--accent); color: #0F1A2E; padding: 20px 0; overflow: hidden;
+    font-family: "Fraunces", serif; font-style: italic; font-size: 30px; letter-spacing: -0.01em;
+  }
+  .marquee-track { display: flex; gap: 48px; white-space: nowrap; animation: marquee 40s linear infinite; width: max-content; }
+  .marquee-item { display: inline-flex; align-items: center; gap: 48px; }
+  .marquee-item::after { content: "✦"; color: #0F1A2E; font-size: 18px; }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* SECTION HEAD */
+  .section { padding: 96px 56px 32px; position: relative; }
+  .section-head { display: flex; align-items: baseline; gap: 24px; margin-bottom: 40px; padding-bottom: 18px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  .kicker { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  .h2 { font-family: "Fraunces", serif; font-weight: 300; font-size: 64px; letter-spacing: -0.02em; line-height: 1; }
+  .h2 em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .section-link { margin-left: auto; font-size: 13px; color: var(--ink-mute); border-bottom: 1px solid rgba(244,233,218,0.3); padding-bottom: 2px; transition: color 200ms; }
+  .section-link:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ABOUT */
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .about-img { aspect-ratio: 4/5; overflow: hidden; position: relative; }
+  .about-img img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.95); }
+  .about-img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(15,26,46,0.4) 100%); pointer-events: none; }
+  .about-h { font-family: "Fraunces", serif; font-weight: 300; font-size: 56px; line-height: 1; letter-spacing: -0.02em; margin-bottom: 28px; }
+  .about-h em { font-style: italic; color: var(--accent); }
+  .about-body p { font-size: 16px; line-height: 1.7; color: var(--ink-soft); margin-bottom: 18px; }
+  .about-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+  .about-card { background: var(--bg-card); padding: 24px; border-radius: 12px; border: 1px solid var(--line); }
+  .about-card h4 { font-family: "Fraunces", serif; font-style: italic; font-size: 22px; margin-bottom: 10px; color: var(--accent); }
+  .about-card p { font-size: 13px; line-height: 1.55; color: var(--ink-mute); }
+
+  /* WORK GRID */
+  .work-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-auto-rows: 320px; gap: 16px; }
+  .proj { position: relative; overflow: hidden; background: var(--bg-card); border-radius: 4px; display: block; }
+  .proj.large { grid-column: span 2; grid-row: span 2; }
+  .proj.tall { grid-row: span 2; }
+  .proj.wide { grid-column: span 2; }
+  .proj img { width: 100%; height: 100%; object-fit: cover; transition: transform 700ms cubic-bezier(.22,1,.36,1); }
+  .proj:hover img { transform: scale(1.04); }
+  .proj-cap { position: absolute; left: 22px; right: 22px; bottom: 22px; color: #fff; display: flex; justify-content: space-between; align-items: end; gap: 16px; z-index: 2; }
+  .proj::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.55) 100%); pointer-events: none; z-index: 1; }
+  .proj-cap-text strong { font-family: "Fraunces", serif; font-weight: 400; font-size: 26px; display: block; letter-spacing: -0.01em; margin-bottom: 4px; }
+  .proj.large .proj-cap-text strong { font-size: 38px; }
+  .proj-cap-text span { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; }
+  .proj-arrow { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: #0F1A2E; display: grid; place-items: center; flex-shrink: 0; transition: transform 200ms; }
+  .proj:hover .proj-arrow { transform: rotate(45deg); }
+
+  /* SOFTWARE LIST */
+  .code-list { display: grid; gap: 0; margin-top: 8px; }
+  .code-row { display: grid; grid-template-columns: 60px 1.6fr 1fr 1fr 60px; gap: 24px; align-items: center; padding: 22px 0; border-bottom: 1px solid var(--line); transition: padding 200ms, color 200ms; min-width: 0; }
+  .code-row:hover { padding-left: 12px; }
+  .code-row:hover .code-title { color: var(--accent); }
+  .code-num { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-mute); }
+  .code-title { font-family: "Fraunces", serif; font-size: 28px; letter-spacing: -0.01em; transition: color 200ms; min-width: 0; }
+  .code-title em { font-style: italic; color: var(--accent); font-size: 14px; font-family: "Inter", sans-serif; font-weight: 500; margin-left: 12px; vertical-align: middle; padding: 3px 10px; border-radius: 99px; background: color-mix(in srgb, var(--accent) 18%, transparent); white-space: nowrap; }
+  .code-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .code-tag { font-size: 11px; padding: 3px 9px; border: 1px solid var(--line); border-radius: 99px; color: var(--ink-soft); white-space: nowrap; }
+  .code-meta { font-size: 12px; color: var(--ink-mute); white-space: nowrap; }
+  .code-arrow { text-align: right; font-size: 18px; color: var(--accent); }
+
+  /* IG RAIL */
+  .ig { padding: 96px 0 32px; }
+  .ig-head { display: flex; justify-content: space-between; align-items: baseline; padding: 0 56px 24px; gap: 16px; flex-wrap: wrap; }
+  .ig-head-left { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .ig-handle { font-family: "Fraunces", serif; font-size: 32px; font-style: italic; color: var(--accent); }
+  .ig-meta { font-size: 12px; color: var(--ink-mute); }
+  .ig-arrows { display: flex; gap: 8px; }
+  .ig-arrow { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(244,233,218,0.3); display: grid; place-items: center; font-size: 16px; color: var(--ink); transition: background 200ms, color 200ms, border-color 200ms; }
+  .ig-arrow:hover { background: var(--accent); color: #0F1A2E; border-color: var(--accent); }
+  .ig-rail { display: flex; gap: 12px; padding: 0 56px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .ig-rail::-webkit-scrollbar { display: none; }
+  .ig-tile { position: relative; flex: 0 0 240px; aspect-ratio: 1/1; overflow: hidden; background: var(--bg-card); scroll-snap-align: start; }
+  .ig-tile--skeleton { background: linear-gradient(110deg, var(--bg-card) 30%, color-mix(in srgb, var(--accent) 8%, var(--bg-card)) 50%, var(--bg-card) 70%); background-size: 200% 100%; animation: shimmer 1.6s linear infinite; }
+  @keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+  .ig-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms; }
+  .ig-tile:hover img { transform: scale(1.03); }
+  .ig-tile-info { position: absolute; left: 10px; right: 10px; bottom: 10px; display: flex; justify-content: space-between; align-items: center; color: #fff; font-size: 11px; }
+  .ig-tile-likes { background: rgba(0,0,0,0.55); padding: 4px 10px; border-radius: 99px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+  .ig-tile-vid { position: absolute; top: 10px; right: 10px; background: var(--accent); color: #0F1A2E; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 700; }
+
+  /* CONTACT CARD */
+  .contact { padding: 96px 56px 56px; }
+  .contact-card {
+    position: relative; overflow: hidden;
+    background: var(--bg-deep); border-radius: 16px; padding: 80px 64px;
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: center;
+  }
+  .contact-card::before {
+    content: ""; position: absolute; top: -100px; right: -50px; width: 400px; height: 400px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--accent) 30%, transparent) 0%, transparent 65%);
+    filter: blur(60px); pointer-events: none;
+  }
+  .contact-card::after {
+    content: ""; position: absolute; bottom: -120px; left: -50px; width: 360px; height: 360px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--accent-2) 28%, transparent) 0%, transparent 65%);
+    filter: blur(60px); pointer-events: none;
+  }
+  .contact-h { position: relative; z-index: 1; font-family: "Fraunces", serif; font-weight: 300; font-size: 72px; line-height: 0.95; letter-spacing: -0.025em; margin-bottom: 24px; }
+  .contact-h em { font-style: italic; color: var(--accent); }
+  .contact-bio { position: relative; z-index: 1; font-size: 16px; line-height: 1.6; color: var(--ink-soft); max-width: 42ch; margin-bottom: 32px; }
+  .contact-row { position: relative; z-index: 1; display: flex; gap: 12px; flex-wrap: wrap; }
+  .contact-side { position: relative; z-index: 1; display: grid; gap: 14px; }
+  .contact-side a { display: grid; grid-template-columns: 14px 1fr auto; gap: 14px; align-items: center; padding: 16px 18px; border: 1px solid var(--line); border-radius: 12px; font-size: 14px; transition: border-color 200ms, background 200ms; }
+  .contact-side a:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  .contact-side .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); justify-self: center; }
+  .contact-side .arr { color: var(--accent); }
+  .contact-side strong { display: block; font-weight: 500; }
+  .contact-side small { display: block; color: var(--ink-mute); font-size: 11px; margin-top: 2px; }
+
+  /* FOOTER */
+  .foot { padding: 32px 56px 40px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--ink-mute); border-top: 1px solid var(--line); flex-wrap: wrap; gap: 12px; }
+  .foot a { margin-left: 24px; color: var(--ink-mute); transition: color 200ms; }
+  .foot-links a:first-child { margin-left: 0; }
+  .foot a:hover { color: var(--accent); }
+
+  /* RATES */
+  .rates-layout { display: grid; grid-template-columns: 220px 1fr; gap: 32px; align-items: start; }
+  .rates-side { position: sticky; top: 96px; display: flex; flex-direction: column; gap: 2px; border-left: 1px solid var(--line); padding-left: 0; }
+  .rates-side-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); padding: 0 0 14px 18px; font-family: "JetBrains Mono", monospace; }
+  .rates-side button { text-align: left; padding: 14px 18px; font-size: 15px; color: var(--ink-soft); border-left: 2px solid transparent; margin-left: -1px; transition: color 200ms, border-color 200ms, background 200ms; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-family: "Fraunces", serif; }
+  .rates-side button:hover { color: var(--ink); }
+  .rates-side button.is-active { color: var(--accent); border-left-color: var(--accent); background: color-mix(in srgb, var(--accent) 6%, transparent); font-style: italic; }
+  .rates-side button .rs-from { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-mute); font-style: normal; }
+  .rates-side button.is-active .rs-from { color: var(--accent); }
+  .rates-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .rate-card { position: relative; padding: 36px 28px 32px; border: 1px solid var(--line); border-radius: 14px; background: var(--bg-card); display: flex; flex-direction: column; gap: 18px; transition: border-color 200ms, transform 200ms; }
+  .rate-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .rate-card.is-featured { border-color: color-mix(in srgb, var(--accent) 60%, transparent); background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 10%, var(--bg-card)) 0%, var(--bg-card) 60%); }
+  .rate-tag { position: absolute; top: -10px; right: 22px; background: var(--accent); color: #0F1A2E; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; padding: 4px 10px; border-radius: 99px; }
+  .rate-name { font-family: "Fraunces", serif; font-style: italic; font-size: 26px; color: var(--accent); }
+  .rate-price { font-family: "Fraunces", serif; font-weight: 300; font-size: 52px; line-height: 1; letter-spacing: -0.02em; }
+  .rate-price small { font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; color: var(--ink-mute); display: block; margin-bottom: 6px; text-transform: uppercase; }
+  .rate-list { display: grid; gap: 10px; font-size: 13px; color: var(--ink-soft); line-height: 1.5; padding-top: 4px; border-top: 1px solid var(--line); margin-top: 4px; padding-top: 18px; }
+  .rate-list li { display: grid; grid-template-columns: 14px 1fr; gap: 10px; align-items: start; }
+  .rate-list li::before { content: "✦"; color: var(--accent); font-size: 11px; line-height: 1.5; }
+  .rate-cta { margin-top: auto; padding-top: 8px; }
+  .rate-cta a { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--accent); border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); padding-bottom: 2px; transition: border-color 200ms; }
+  .rate-cta a:hover { border-color: var(--accent); }
+  .rates-note { margin-top: 28px; font-size: 12px; color: var(--ink-mute); font-family: "JetBrains Mono", monospace; letter-spacing: 0.04em; }
+
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    .hdr { grid-template-columns: auto auto; padding: 18px 24px; gap: 16px; }
+    .nav { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: 0; }
+    .hero-text { padding: 48px 24px; }
+    .hero-img { aspect-ratio: 4/3; }
+    .hero-title { font-size: 64px; }
+    .section { padding: 64px 24px 24px; }
+    .h2 { font-size: 44px; }
+    .about { grid-template-columns: 1fr; gap: 32px; }
+    .about-h { font-size: 38px; }
+    .about-cards { grid-template-columns: 1fr; }
+    .work-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 220px; }
+    .proj.large, .proj.wide { grid-column: span 2; }
+    .code-row { grid-template-columns: 40px 1fr 40px; row-gap: 8px; }
+    .code-tags, .code-meta { grid-column: 2 / 3; }
+    .code-title { font-size: 22px; }
+    .ig-head { padding: 0 24px 16px; }
+    .ig-rail { padding: 0 24px; }
+    .contact { padding: 64px 24px 32px; }
+    .rates-layout { grid-template-columns: 1fr; gap: 24px; }
+    .rates-side { position: static; flex-direction: row; overflow-x: auto; border-left: 0; border-bottom: 1px solid var(--line); padding-bottom: 0; }
+    .rates-side-label { display: none; }
+    .rates-side button { border-left: 0; border-bottom: 2px solid transparent; padding: 12px 14px; white-space: nowrap; font-size: 14px; }
+    .rates-side button.is-active { border-left-color: transparent; border-bottom-color: var(--accent); background: transparent; }
+    .rates-side button .rs-from { display: none; }
+    .rates-grid { grid-template-columns: 1fr; }
+    .contact-card { grid-template-columns: 1fr; padding: 48px 28px; gap: 32px; }
+    .contact-h { font-size: 48px; }
+    .foot { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+
+<script type="text/babel" data-presets="env,react">
+const { useRef, useState, useEffect } = React;
+
+// Behold.so feed — swap this if your dashboard shows a different ID
+const BEHOLD_FEED_ID = "SFaobFIe5lxmUBUTTfqS";
+const BEHOLD_URL = `https://feeds.behold.so/${BEHOLD_FEED_ID}`;
+
+// Rates — edit packages, prices, deliverables freely
+const RATES = [
+  {
+    id: "automotive",
+    label: "Automotive",
+    from: "from $200",
+    blurb: "Cars, builds, meets, rolling shots.",
+    packages: [
+      {
+        name: "Mini",
+        price: "$200",
+        priceLabel: "From",
+        bullets: ["1 hour, single location", "8 edited images", "5-day turnaround", "Personal use license"],
+        cta: "Inquire",
+        subject: "Automotive — Mini session"
+      },
+      {
+        name: "Car Session",
+        price: "$400",
+        priceLabel: "From",
+        featured: true,
+        tag: "Most booked",
+        bullets: ["2 hours, golden-hour scheduled", "15–20 edited images", "Up to 2 locations", "Optional rolling shots add-on", "5-day turnaround"],
+        cta: "Book a session",
+        subject: "Automotive — Car session"
+      },
+      {
+        name: "Brand & Commercial",
+        price: "By inquiry",
+        priceLabel: "Project",
+        bullets: ["Shop & dealer social content", "Product, lifestyle, editorial", "Monthly retainers available", "Commercial usage included"],
+        cta: "Get a quote",
+        subject: "Automotive — Commercial inquiry"
+      }
+    ]
+  },
+  {
+    id: "portrait",
+    label: "Portrait",
+    from: "from $150",
+    blurb: "Headshots, personal branding, simple portraits.",
+    packages: [
+      {
+        name: "Headshot",
+        price: "$150",
+        priceLabel: "From",
+        bullets: ["30 min, single backdrop or location", "5 edited images", "3-day turnaround", "Personal use license"],
+        cta: "Inquire",
+        subject: "Portrait — Headshot"
+      },
+      {
+        name: "Standard",
+        price: "$300",
+        priceLabel: "From",
+        featured: true,
+        tag: "Most booked",
+        bullets: ["1 hour, 1–2 outfit changes", "12–15 edited images", "Indoor or outdoor", "5-day turnaround"],
+        cta: "Book a session",
+        subject: "Portrait — Standard"
+      },
+      {
+        name: "Premium",
+        price: "$500",
+        priceLabel: "From",
+        bullets: ["2 hours, multiple looks", "25 edited images", "Up to 2 locations", "Personal branding usage included"],
+        cta: "Get a quote",
+        subject: "Portrait — Premium"
+      }
+    ]
+  },
+  {
+    id: "lifestyle",
+    label: "Lifestyle",
+    from: "from $200",
+    blurb: "Couples, families, friend groups, casual shoots.",
+    packages: [
+      {
+        name: "Mini",
+        price: "$200",
+        priceLabel: "From",
+        bullets: ["45 min, single location", "10 edited images", "5-day turnaround", "Personal use license"],
+        cta: "Inquire",
+        subject: "Lifestyle — Mini"
+      },
+      {
+        name: "Standard",
+        price: "$400",
+        priceLabel: "From",
+        featured: true,
+        tag: "Most booked",
+        bullets: ["1.5 hours, 1–2 locations", "20 edited images", "Couples, family, friends", "5-day turnaround"],
+        cta: "Book a session",
+        subject: "Lifestyle — Standard"
+      },
+      {
+        name: "Adventure",
+        price: "$700",
+        priceLabel: "From",
+        bullets: ["3+ hours, full day available", "35 edited images", "Travel within Texas included", "Storytelling sequence"],
+        cta: "Get a quote",
+        subject: "Lifestyle — Adventure"
+      }
+    ]
+  },
+  {
+    id: "events",
+    label: "Events & Brand",
+    from: "from $250/hr",
+    blurb: "Meets, launches, brand activations, content days.",
+    packages: [
+      {
+        name: "Hourly",
+        price: "$250",
+        priceLabel: "Per hour",
+        bullets: ["2 hour minimum", "20 edited images per hour", "Quick-turn previews available", "Personal use license"],
+        cta: "Inquire",
+        subject: "Events — Hourly"
+      },
+      {
+        name: "Half Day",
+        price: "$800",
+        priceLabel: "Up to 4 hrs",
+        featured: true,
+        tag: "Most booked",
+        bullets: ["Up to 4 hours of coverage", "60+ edited images", "Same-week turnaround", "Brand usage included"],
+        cta: "Book coverage",
+        subject: "Events — Half day"
+      },
+      {
+        name: "Full Day / Retainer",
+        price: "By inquiry",
+        priceLabel: "Project",
+        bullets: ["Full-day events or activations", "Monthly content retainers", "Commercial usage included", "Optional video add-on"],
+        cta: "Get a quote",
+        subject: "Events — Full day / retainer"
+      }
+    ]
+  }
+];
+
+const D = {
+  email: "lmaroria@gmail.com",
+  github: "https://github.com/Lmar-O",
+  linkedin: "https://linkedin.com/in/lmaroria",
+  instagram: "https://instagram.com/lmars.studio",
+  tiktok: "https://tiktok.com/@lmars.studio",
+  youtube: "https://youtube.com/@lmars.studio",
+  bio: "Photographer chasing good light around San Antonio. Cars are the obsession — streets and landscapes are everything in between. Branching into video too.",
+  photos: [
+    { src: "photos/DSC05077.jpg",   alt: "VW Beetle" },
+    { src: "photos/DSC05137.jpg",   alt: "Porsche GT3" },
+    { src: "photos/DSC05466-2.jpg", alt: "Mercedes E450" },
+    { src: "photos/DSC08581.jpg",   alt: "Tokyo alley" },
+    { src: "photos/DSC09367-2.jpg", alt: "Pacifica landscape" },
+    { src: "photos/Untitled-1.jpg", alt: "Triptych" }
+  ],
+};
+const P = (i) => D.photos[i % D.photos.length];
+
+function App() {
+  const railRef = useRef(null);
+  const scroll = (dir) => {
+    const el = railRef.current;
+    if (el) el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: "smooth" });
+  };
+
+  const [activeRate, setActiveRate] = useState(RATES[0].id);
+  const activeRateData = RATES.find(r => r.id === activeRate) || RATES[0];
+
+  const [feed, setFeed] = useState(null);
+  useEffect(() => {
+    let alive = true;
+    fetch(BEHOLD_URL)
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(data => {
+        if (!alive) return;
+        const posts = (data.posts || []).slice(0, 12).map(p => ({
+          id: p.id,
+          url: p.permalink,
+          img: (p.sizes && p.sizes.medium && p.sizes.medium.mediaUrl) || p.mediaUrl,
+          isVideo: p.mediaType === "VIDEO",
+          isAlbum: p.mediaType === "CAROUSEL_ALBUM"
+        }));
+        setFeed({ posts, profile: { username: data.username, avatar: data.profilePictureUrl } });
+      })
+      .catch(() => { if (alive) setFeed({ posts: [], error: true }); });
+    return () => { alive = false; };
+  }, []);
+
+  return (
+    <div className="page">
+      {/* HEADER */}
+      <header className="hdr">
+        <a href="#" className="logo">
+          <span className="logo-top"><em>Lmars</em> Studio</span>
+          <span className="logo-bot">Photography · Est. 2025</span>
+        </a>
+        <nav className="nav">
+          <a href="#photography" className="is-active">Photography</a>
+          <a href="#video">Video</a>
+          <a href="#rates">Rates</a>
+          <a href="#about">About</a>
+          <a href="#feed">Feed</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a href="#contact" className="cta">Get in touch →</a>
+      </header>
+
+      {/* HERO */}
+      <section className="hero" id="work">
+        <div className="hero-text">
+          <div>
+            <span className="eyebrow">Booking shoots · Spring '26</span>
+            <h1 className="hero-title">Hi, I'm <em>Lmar</em>.<br/>I shoot photo<br/>&amp; video.</h1>
+            <p className="hero-bio">
+              Based in San Antonio. Cars, streets, and the occasional
+              landscape that won't sit still. Always chasing good light
+              and a faster shutter.
+            </p>
+            <div className="hero-row">
+              <a href="#photography" className="pill pill--primary">See the work →</a>
+              <a href={D.instagram} className="pill pill--ghost">@lmars.studio</a>
+            </div>
+            <div className="hero-meta">
+              <div>BASED IN<span>San Antonio, TX</span></div>
+              <div>SHOOTING<span>Cars · Streets · Land</span></div>
+              <div>STATUS<span>Booking shoots</span></div>
+            </div>
+          </div>
+        </div>
+        <div className="hero-img">
+          <img src={P(1).src} alt={P(1).alt} />
+          <div className="hero-img-meta">
+            <strong>Porsche GT3</strong>
+            <span>SATX · Apr 2025</span>
+          </div>
+        </div>
+      </section>
+
+      {/* MARQUEE */}
+      <div className="marquee">
+        <div className="marquee-track">
+          {["Photography","Video","Automotive","Street","Landscape","San Antonio","Photography","Video","Automotive","Street","Landscape","San Antonio"].map((t,i) => (
+            <div key={i} className="marquee-item">{t}</div>
+          ))}
+        </div>
+      </div>
+
+      {/* ABOUT */}
+      <section className="section" id="about">
+        <div className="section-head">
+          <span className="kicker">— About</span>
+          <h2 className="h2">A bit <em>about me</em></h2>
+          <a href="#contact" className="section-link">Read full bio →</a>
+        </div>
+        <div className="about">
+          <div className="about-img"><img src={P(3).src} alt={P(3).alt} /></div>
+          <div className="about-body">
+            <h3 className="about-h">I chase <em>good light</em>, fast cars, and <em>quiet streets</em>.</h3>
+            <p>{D.bio}</p>
+            <p>Always looking for the next shoot — cars, lifestyle, editorial. Reach out if you've got something you want photographed.</p>
+            <div className="about-cards">
+              <div className="about-card">
+                <h4>Stills</h4>
+                <p>Automotive, street, landscape. Comfortable with natural light, strobes, and long exposures — happy to figure out whatever a shoot needs.</p>
+              </div>
+              <div className="about-card">
+                <h4>Video</h4>
+                <p>Short-form clips and behind-the-scenes for cars and brands. Building this part of the studio out — let's collab.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PHOTOGRAPHY GRID */}
+      <section className="section" id="photography">
+        <div className="section-head">
+          <span className="kicker">— Photography</span>
+          <h2 className="h2">Selected <em>frames</em></h2>
+          <a href={D.instagram} className="section-link">View all →</a>
+        </div>
+        <div className="work-grid">
+          <a className="proj large" href={D.instagram}>
+            <img src={P(2).src} alt={P(2).alt} />
+            <div className="proj-cap">
+              <div className="proj-cap-text"><strong>Mercedes E450</strong><span>Automotive · 2025</span></div>
+              <span className="proj-arrow">↗</span>
+            </div>
+          </a>
+          <a className="proj" href={D.instagram}>
+            <img src={P(1).src} alt={P(1).alt} />
+            <div className="proj-cap">
+              <div className="proj-cap-text"><strong>Porsche GT3</strong><span>Automotive · 2025</span></div>
+              <span className="proj-arrow">↗</span>
+            </div>
+          </a>
+          <a className="proj" href={D.instagram}>
+            <img src={P(0).src} alt={P(0).alt} />
+            <div className="proj-cap">
+              <div className="proj-cap-text"><strong>VW Beetle</strong><span>Street · 2024</span></div>
+              <span className="proj-arrow">↗</span>
+            </div>
+          </a>
+          <a className="proj wide" href={D.instagram}>
+            <img src={P(3).src} alt={P(3).alt} />
+            <div className="proj-cap">
+              <div className="proj-cap-text"><strong>Tokyo Alleys</strong><span>Street · 2024</span></div>
+              <span className="proj-arrow">↗</span>
+            </div>
+          </a>
+          <a className="proj" href={D.instagram}>
+            <img src={P(4).src} alt={P(4).alt} />
+            <div className="proj-cap">
+              <div className="proj-cap-text"><strong>Pacifica</strong><span>Landscape · 2024</span></div>
+              <span className="proj-arrow">↗</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      {/* RATES */}
+      <section className="section" id="rates">
+        <div className="section-head">
+          <span className="kicker">— Rates</span>
+          <h2 className="h2">Book a <em>shoot</em></h2>
+          <a href={`mailto:${D.email}?subject=Booking inquiry`} className="section-link">Custom inquiry →</a>
+        </div>
+        <div className="rates-layout">
+          <aside className="rates-side">
+            <div className="rates-side-label">// Categories</div>
+            {RATES.map(cat => (
+              <button
+                key={cat.id}
+                className={cat.id === activeRate ? "is-active" : ""}
+                onClick={() => setActiveRate(cat.id)}
+              >
+                <span>{cat.label}</span>
+                <span className="rs-from">{cat.from}</span>
+              </button>
+            ))}
+          </aside>
+
+          <div>
+            <div className="rates-grid">
+              {activeRateData.packages.map((pkg, i) => (
+                <div key={i} className={"rate-card" + (pkg.featured ? " is-featured" : "")}>
+                  {pkg.tag && <span className="rate-tag">{pkg.tag}</span>}
+                  <div className="rate-name">{pkg.name}</div>
+                  <div className="rate-price"><small>{pkg.priceLabel}</small>{pkg.price}</div>
+                  <ul className="rate-list">
+                    {pkg.bullets.map((b, j) => <li key={j}>{b}</li>)}
+                  </ul>
+                  <div className="rate-cta">
+                    <a href={`mailto:${D.email}?subject=${encodeURIComponent(pkg.subject)}`}>{pkg.cta} →</a>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="rates-note">// {activeRateData.blurb} Travel beyond San Antonio billed at cost. 25% deposit holds the date. Reschedules free up to 48 hrs out.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* VIDEO */}
+      <section className="section" id="video">
+        <div className="section-head">
+          <span className="kicker">— Video</span>
+          <h2 className="h2">Recent <em>reels</em></h2>
+          <a href={D.tiktok} className="section-link">TikTok →</a>
+        </div>
+        <div className="work-grid">
+          <a className="proj wide" href={D.youtube}>
+            <img src={P(2).src} alt="" />
+            <div className="proj-cap">
+              <div className="proj-cap-text"><strong>E450 — B-Roll</strong><span>Automotive · 2025</span></div>
+              <span className="proj-arrow">▶</span>
+            </div>
+          </a>
+          <a className="proj" href={D.tiktok}>
+            <img src={P(1).src} alt="" />
+            <div className="proj-cap">
+              <div className="proj-cap-text"><strong>GT3 — Drive</strong><span>Reel · 2025</span></div>
+              <span className="proj-arrow">▶</span>
+            </div>
+          </a>
+          <a className="proj" href={D.tiktok}>
+            <img src={P(3).src} alt="" />
+            <div className="proj-cap">
+              <div className="proj-cap-text"><strong>Tokyo Walk</strong><span>Reel · 2024</span></div>
+              <span className="proj-arrow">▶</span>
+            </div>
+          </a>
+          <a className="proj" href={D.youtube}>
+            <img src={P(4).src} alt="" />
+            <div className="proj-cap">
+              <div className="proj-cap-text"><strong>Pacifica</strong><span>Short · 2024</span></div>
+              <span className="proj-arrow">▶</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      {/* IG RAIL */}
+      <section className="ig" id="feed">
+        <div className="ig-head">
+          <div className="ig-head-left">
+            <span className="kicker">— From the feed</span>
+            <span className="ig-handle">@{feed && feed.profile && feed.profile.username ? feed.profile.username : "lmars.studio"}</span>
+            <span className="ig-meta">
+              {!feed && "Loading…"}
+              {feed && feed.error && "Could not load feed"}
+              {feed && !feed.error && `Latest ${feed.posts.length} posts`}
+            </span>
+          </div>
+          <div className="ig-arrows">
+            <button className="ig-arrow" onClick={() => scroll(-1)} aria-label="Previous">←</button>
+            <button className="ig-arrow" onClick={() => scroll(1)} aria-label="Next">→</button>
+          </div>
+        </div>
+        <div className="ig-rail" ref={railRef}>
+          {feed && !feed.error && feed.posts.length > 0
+            ? feed.posts.map((post) => (
+                <a key={post.id} className="ig-tile" href={post.url} target="_blank" rel="noopener noreferrer">
+                  <img src={post.img} alt="" loading="lazy" />
+                  {post.isVideo && <span className="ig-tile-vid">▶</span>}
+                  {post.isAlbum && <span className="ig-tile-vid" aria-label="Album">⊞</span>}
+                </a>
+              ))
+            : Array.from({ length: 7 }).map((_, i) => (
+                <a key={i} className="ig-tile ig-tile--skeleton" href={D.instagram} target="_blank" rel="noopener noreferrer" aria-hidden="true"></a>
+              ))
+          }
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section className="contact" id="contact">
+        <div className="contact-card">
+          <div>
+            <h2 className="contact-h">Got something <em>in mind?</em></h2>
+            <p className="contact-bio">
+              Shoots, collabs, or just a coffee — drop a line and I'll get back
+              within a day or two. Based in San Antonio, happy to travel for the right shoot.
+            </p>
+            <div className="contact-row">
+              <a className="pill pill--primary" href={`mailto:${D.email}`}>{D.email} →</a>
+              <a className="pill pill--ghost" href={`mailto:${D.email}?subject=Schedule a call`}>Schedule a call</a>
+            </div>
+          </div>
+          <div className="contact-side">
+            <a href={D.instagram}><span className="dot"></span><div><strong>@lmars.studio</strong><small>Photos on Instagram</small></div><span className="arr">↗</span></a>
+            <a href={D.tiktok}><span className="dot"></span><div><strong>@lmars.studio</strong><small>Behind the scenes on TikTok</small></div><span className="arr">↗</span></a>
+            <a href={D.youtube}><span className="dot"></span><div><strong>@lmars.studio</strong><small>Longer cuts on YouTube</small></div><span className="arr">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="foot">
+        <span>© 2026 Lmars Studio · Shot in San Antonio</span>
+        <span className="foot-links">
+          <a href={D.instagram}>Instagram</a>
+          <a href={D.tiktok}>TikTok</a>
+          <a href={D.youtube}>YouTube</a>
+          <a href={`mailto:${D.email}`}>Email</a>
+        </span>
+      </footer>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

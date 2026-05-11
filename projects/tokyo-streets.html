@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tokyo Streets — Lmars Studio</title>
+<meta name="description" content="Tokyo Streets — a series of alleyway and neon photos by Lmar Oria." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/styles.css">
+
+<!-- ====================================================================
+     Project-specific palette override.
+     Change these CSS variables to re-theme this project page only.
+     Other pages stay on the default marigold/navy palette.
+     ==================================================================== -->
+<style>
+  :root {
+    --bg:        #14202C;   /* deep teal-navy */
+    --bg-deep:   #0B141C;
+    --bg-card:   #1F2E3D;
+    --ink:       #E8F0F5;
+    --ink-mute:  rgba(232, 240, 245, 0.62);
+    --ink-soft:  rgba(232, 240, 245, 0.85);
+    --line:      rgba(232, 240, 245, 0.12);
+    --accent:    #E85D5D;   /* neon-sign red */
+    --accent-2:  #7FB8D4;   /* steel blue glow */
+  }
+  body { background: var(--bg); }
+  .hdr { background: rgba(20,32,44,0.85); }
+</style>
+
+<script src="/projects.js" defer></script>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="hdr">
+    <a href="/" class="logo">
+      <span class="logo-top"><em>Lmars</em> Studio</span>
+      <span class="logo-bot">Photography · Est. 2025</span>
+    </a>
+    <nav class="nav">
+      <a href="/#photography">Photography</a>
+      <a href="/#video">Video</a>
+      <div class="nav-item">
+        <button type="button" aria-haspopup="true">Projects <span class="caret">▾</span></button>
+        <ul class="proj-drop" data-projects-dropdown></ul>
+      </div>
+      <a href="/#rates">Rates</a>
+      <a href="/#about">About</a>
+      <a href="/#feed">Feed</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <a href="/contact.html" class="cta">Get in touch →</a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span class="mt-icon"><span></span></span>
+    </button>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav>
+      <a href="/#photography">Photography</a>
+      <a href="/#video">Video</a>
+      <button type="button" class="m-projects-toggle" aria-expanded="false" aria-controls="mProjects">
+        Projects <span class="m-caret">+</span>
+      </button>
+      <ul class="m-projects" id="mProjects" data-projects-mobile></ul>
+      <a href="/#rates">Rates</a>
+      <a href="/#about">About</a>
+      <a href="/#feed">Feed</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/contact.html" class="m-cta">Get in touch →</a>
+    </nav>
+  </div>
+
+  <!-- PROJECT HERO -->
+  <section class="proj-page">
+    <div class="proj-hero">
+      <div class="proj-hero-text reveal">
+        <span class="eyebrow">— Project · 2024</span>
+        <h1>Tokyo <em>Streets</em></h1>
+        <p>A week of slow walks through Shimokitazawa, Yanaka, and the alleys behind Shinjuku. Mostly nights. Mostly raining. The series I keep coming back to.</p>
+        <div class="proj-hero-meta">
+          <div>SHOT IN<span>Tokyo, JP</span></div>
+          <div>WHEN<span>March 2024</span></div>
+          <div>FRAMES<span>32 selected</span></div>
+        </div>
+      </div>
+      <div class="proj-hero-img reveal reveal-d2">
+        <img src="/photos/DSC08581.jpg" alt="Cyclist passing through a Tokyo alley at night" />
+      </div>
+    </div>
+
+    <div class="proj-gallery">
+      <div class="cell large reveal"><img src="/photos/DSC08581.jpg" alt="" loading="lazy" /></div>
+      <div class="cell reveal reveal-d1"><img src="/photos/DSC09367-2.jpg" alt="" loading="lazy" /></div>
+      <div class="cell reveal reveal-d2"><img src="/photos/DSC05077.jpg" alt="" loading="lazy" /></div>
+      <div class="cell wide reveal reveal-d3"><img src="/photos/DSC05466-2.jpg" alt="" loading="lazy" /></div>
+      <div class="cell reveal reveal-d1"><img src="/photos/Untitled-1.jpg" alt="" loading="lazy" /></div>
+      <div class="cell reveal reveal-d2"><img src="/photos/DSC05137.jpg" alt="" loading="lazy" /></div>
+      <div class="cell reveal reveal-d3"><img src="/photos/DSC08581.jpg" alt="" loading="lazy" /></div>
+      <div class="cell wide reveal reveal-d4"><img src="/photos/DSC09367-2.jpg" alt="" loading="lazy" /></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="proj-foot-cta">
+    <div class="inner reveal">
+      <div>
+        <h3>Like what you see? <em>Let's shoot something.</em></h3>
+        <p>I'm based in San Antonio but I travel. If a series like this sparks an idea — cars, places, a city, a story — let's talk.</p>
+      </div>
+      <a class="pill pill--primary" href="/contact.html">Start a project →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <span>© 2026 Lmars Studio · Shot in San Antonio</span>
+    <span class="foot-links">
+      <a href="https://instagram.com/lmar.oria">Instagram</a>
+      <a href="mailto:lmaroria@gmail.com">Email</a>
+    </span>
+  </footer>
+</div>
+</body>
+</html>

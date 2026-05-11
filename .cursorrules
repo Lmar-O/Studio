@@ -1,0 +1,24 @@
+# Cursor rules for Lmars Studio
+
+Read `CLAUDE.md` and `DESIGN.md` at the repo root before making any changes.
+
+These two files are the source of truth for:
+
+- **CLAUDE.md** — project goals, voice/tone, tech stack, file structure, workflows for adding projects and photos, conventions, and the cross-tool sync rule.
+- **DESIGN.md** — color tokens, typography scale, spacing, component patterns, animations, responsive rules, and how to make sitewide design changes.
+
+## Critical conventions (summary)
+
+- The site is **Lmar Oria's photography & video portfolio** — based in **San Antonio**, not San Francisco. Do not mention camera bodies (e.g. "Sony A7iii"). Use **"video"**, not "motion."
+- This is a **plain static HTML/CSS/JS site**. No build step. No framework. Don't add one.
+- **One shared `styles.css`** for all pages. Project-page palette overrides go in a small `<style>` block at the top of that page only.
+- **Shared `projects.js`** handles the Projects dropdown, mobile menu, and reveal-on-scroll observer. Extend it rather than creating new JS files.
+- **Use CSS variables** (`--bg`, `--ink`, `--accent`, etc.) — never hardcode hex outside of a project page's palette override.
+- **Project dropdown titles** must be ~2–3 words / ≤20 chars.
+- **Animations** must respect `prefers-reduced-motion`.
+
+## Sync rule
+
+After any non-trivial change, update `CLAUDE.md` or `DESIGN.md` to match. Out-of-date docs are treated as bugs. Commit doc updates alongside code changes.
+
+If a convention in those files is unclear or contradicts the actual codebase, fix the file rather than working around it.

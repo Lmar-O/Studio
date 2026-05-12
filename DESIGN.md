@@ -73,13 +73,14 @@ Palette starting points to copy/paste:
 
 ## Typography
 
-Three families, loaded from Google Fonts in every page's `<head>`:
+Two families, loaded from Google Fonts in every page's `<head>`:
 
-| Family            | Use                                                    |
-|-------------------|--------------------------------------------------------|
-| **Fraunces**      | Serif display — h1, h2, h3, italics, project titles    |
-| **Inter**         | Sans body & UI — paragraphs, nav, buttons, form labels |
-| **JetBrains Mono**| Mono accents — eyebrows, meta strips, fine print, code |
+| Family            | Use                                                                  |
+|-------------------|----------------------------------------------------------------------|
+| **Fraunces**      | Serif display — h1, h2, h3, italic accents, project titles, card heads |
+| **Manrope**       | Sans body & UI — paragraphs, nav, buttons, form fields, small uppercase labels |
+
+> No mono font and no second sans. The previous `JetBrains Mono` / `Inter` pairing read as "tech product" — we want "personal art portfolio." If a label needs to feel utility-flavored, use Manrope uppercase tracked. If a label needs to feel personal/handmade, use Fraunces italic lowercase.
 
 ### Scale (desktop)
 
@@ -90,11 +91,12 @@ Three families, loaded from Google Fonts in every page's `<head>`:
 | Project page `h1`      | Fraunces | 96px   | 300    | matches hero                           |
 | `.about-h` / `.contact-h` | Fraunces | 56–72px | 300 | section subtitles                      |
 | `.h3` / card titles    | Fraunces | 22–28px| 300–400| italic                                 |
-| Body `<p>`             | Inter    | 16–17px| 400    | line-height ~1.6                       |
-| Nav links              | Inter    | 13px   | 500    | letter-spacing 0                       |
-| `.eyebrow` / `.kicker` | Inter    | 11px   | 500    | uppercase, letter-spacing 0.14–0.18em  |
-| Pill button (`.pill`)  | Inter    | 13px   | 500    | rounded-99                             |
-| Meta strips            | JetBrains Mono | 11px | 500 | inner serif italic value, mono label  |
+| Body `<p>`             | Manrope  | 16–17px| 400    | line-height ~1.6                       |
+| Nav links              | Manrope  | 13px   | 500    | letter-spacing 0                       |
+| `.eyebrow` / `.kicker` | Manrope  | 11px   | 500    | uppercase, letter-spacing 0.14–0.18em  |
+| Pill button (`.pill`)  | Manrope  | 13px   | 500    | rounded-99                             |
+| Meta strips            | Manrope  | 11px   | 500    | uppercase label, italic serif value beneath |
+| Form labels (`.cf`)    | Manrope  | 11px   | 500    | uppercase, letter-spacing 0.16em       |
 
 ### Mobile scale
 
@@ -150,7 +152,7 @@ Image-first, dark gradient bottom, title + meta + arrow on hover. Sizes: default
 Vertical list at `<960px`, horizontal scroll tabs on mobile. Active state: marigold left-border (desktop) or bottom-border (mobile) + italic Fraunces label. Don't introduce a "more" or overflow menu — keep category count ≤ 5.
 
 ### Forms (`.cf` on contact page)
-Bottom-border inputs only, no boxed fields. Labels above in JetBrains Mono uppercase. Submit is a primary pill.
+Bottom-border inputs only, no boxed fields. Labels above in Manrope uppercase with tracking. Submit is a primary pill.
 
 ### Project page (`.proj-page`)
 - Hero: 2-col grid, `align-items: end` (text bottom-aligned to image)

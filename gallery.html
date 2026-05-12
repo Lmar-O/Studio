@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="/styles.css">
 
@@ -69,7 +69,7 @@
 
     <div class="gallery-layout">
       <aside class="gallery-side" id="gallerySide">
-        <div class="gallery-side-label">// Categories</div>
+        <div class="gallery-side-label">Categories</div>
         <!-- buttons injected by gallery script -->
       </aside>
 
@@ -135,13 +135,13 @@
         grid.innerHTML = photos.map(function (p, i) {
           var delay = i < 6 ? ' reveal-d' + ((i % 5) + 1) : '';
           return (
-            '<div class="gallery-tile reveal' + delay + '" tabindex="0" role="button"' +
+            '<div class="gallery-tile reveal' + delay + '" data-lightbox tabindex="0" role="button"' +
               ' data-src="' + p.src + '" data-alt="' + (p.alt || '').replace(/"/g, '&quot;') + '">' +
               '<img src="' + p.src + '" alt="' + (p.alt || '') + '" loading="lazy" />' +
             '</div>'
           );
         }).join('');
-        count.textContent = '// Showing ' + photos.length + ' ' + (photos.length === 1 ? 'frame' : 'frames') + (active === 'All' ? '' : ' in ' + active);
+        count.textContent = 'Showing ' + photos.length + ' ' + (photos.length === 1 ? 'frame' : 'frames') + (active === 'All' ? '' : ' in ' + active);
 
         // Re-trigger reveal observer on the newly inserted tiles
         if (typeof window.initReveals === 'function') window.initReveals();
@@ -149,67 +149,7 @@
 
       renderSide();
       renderGrid();
-
-      // Open lightbox on tile click or Enter/Space
-      grid.addEventListener('click', function (e) {
-        var tile = e.target.closest('.gallery-tile');
-        if (tile) openLightbox(tile.dataset.src, tile.dataset.alt);
-      });
-      grid.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          var tile = e.target.closest('.gallery-tile');
-          if (tile) { e.preventDefault(); openLightbox(tile.dataset.src, tile.dataset.alt); }
-        }
-      });
     }
-
-    // ── Lightbox ────────────────────────────────────────────────────
-    var activeLb = null;
-
-    function openLightbox(src, alt) {
-      if (activeLb) return;
-
-      activeLb = document.createElement('div');
-      activeLb.className = 'lightbox';
-      activeLb.setAttribute('role', 'dialog');
-      activeLb.setAttribute('aria-modal', 'true');
-      activeLb.setAttribute('aria-label', alt || 'Photo');
-      activeLb.addEventListener('click', closeLightbox);
-
-      var closeBtn = document.createElement('button');
-      closeBtn.className = 'lb-close';
-      closeBtn.setAttribute('aria-label', 'Close');
-      closeBtn.textContent = '✕';
-      closeBtn.addEventListener('click', closeLightbox);
-
-      var wrap = document.createElement('div');
-      wrap.className = 'lb-img-wrap';
-      wrap.addEventListener('click', function (e) { e.stopPropagation(); });
-
-      var img = document.createElement('img');
-      img.src = src;
-      img.alt = alt || '';
-
-      wrap.appendChild(img);
-      activeLb.appendChild(closeBtn);
-      activeLb.appendChild(wrap);
-      document.body.appendChild(activeLb);
-
-      document.addEventListener('keydown', onLbKey);
-    }
-
-    function closeLightbox() {
-      if (activeLb) {
-        document.body.removeChild(activeLb);
-        activeLb = null;
-        document.removeEventListener('keydown', onLbKey);
-      }
-    }
-
-    function onLbKey(e) {
-      if (e.key === 'Escape') closeLightbox();
-    }
-    // ────────────────────────────────────────────────────────────────
 
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', init);

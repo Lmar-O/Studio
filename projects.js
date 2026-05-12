@@ -116,9 +116,96 @@ window.PROJECTS = [
   }
   window.initReveals = initReveals;
 
+  // Lightbox — shared across pages.
+  // Any element with attribute `data-lightbox` becomes a click/keyboard
+  // trigger. Provide data-src / data-alt explicitly, or let it read the
+  // child <img>'s currentSrc + alt automatically.
+  function initLightbox() {
+    if (window.__lightboxInit) return;
+    window.__lightboxInit = true;
+
+    var active = null;
+
+    function open(src, alt) {
+      if (active || !src) return;
+      active = document.createElement('div');
+      active.className = 'lightbox';
+      active.setAttribute('role', 'dialog');
+      active.setAttribute('aria-modal', 'true');
+      active.setAttribute('aria-label', alt || 'Photo');
+      active.addEventListener('click', close);
+
+      var btn = document.createElement('button');
+      btn.className = 'lb-close';
+      btn.setAttribute('aria-label', 'Close');
+      btn.textContent = '✕';
+      btn.addEventListener('click', close);
+
+      var wrap = document.createElement('div');
+      wrap.className = 'lb-img-wrap';
+      wrap.addEventListener('click', function (e) { e.stopPropagation(); });
+
+      var img = document.createElement('img');
+      img.src = src;
+      img.alt = alt || '';
+
+      wrap.appendChild(img);
+      active.appendChild(btn);
+      active.appendChild(wrap);
+      document.body.appendChild(active);
+      document.addEventListener('keydown', onKey);
+    }
+    function close() {
+      if (!active) return;
+      var lb = active;
+      document.removeEventListener('keydown', onKey);
+      lb.classList.add('is-closing');
+      var done = false;
+      function cleanup() {
+        if (done) return;
+        done = true;
+        if (lb.parentNode) lb.parentNode.removeChild(lb);
+        if (active === lb) active = null;
+      }
+      lb.addEventListener('animationend', cleanup, { once: true });
+      setTimeout(cleanup, 320);
+    }
+    function onKey(e) { if (e.key === 'Escape') close(); }
+
+    function resolve(el) {
+      var src = el.dataset.src;
+      var alt = el.dataset.alt;
+      if (!src) {
+        var img = el.querySelector('img');
+        if (img) { src = img.currentSrc || img.src; alt = alt || img.alt; }
+      }
+      return src ? { src: src, alt: alt } : null;
+    }
+
+    document.addEventListener('click', function (e) {
+      var el = e.target.closest('[data-lightbox]');
+      if (!el) return;
+      e.preventDefault();
+      var data = resolve(el);
+      if (data) open(data.src, data.alt);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      var el = document.activeElement && document.activeElement.closest && document.activeElement.closest('[data-lightbox]');
+      if (!el) return;
+      e.preventDefault();
+      var data = resolve(el);
+      if (data) open(data.src, data.alt);
+    });
+
+    window.openLightbox = open;
+  }
+  window.initLightbox = initLightbox;
+
   window.renderProjectsDropdown = render;
 
-  function boot() { render(); initMobileMenu(); initReveals(); }
+  function boot() { render(); initMobileMenu(); initReveals(); initLightbox(); }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot);

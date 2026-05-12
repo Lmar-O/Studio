@@ -19,7 +19,7 @@
   button { font: inherit; background: none; border: 0; cursor: pointer; color: inherit; }
   ul { list-style: none; }
 
-  .page { max-width: 1440px; margin: 0 auto; }
+  .page { width: 100%; margin: 0 auto; }
 
   /* HEADER */
   .hdr {

@@ -115,6 +115,7 @@
   .proj.tall { grid-row: span 2; }
   .proj.wide { grid-column: span 2; }
   .proj img { width: 100%; height: 100%; object-fit: cover; transition: transform 700ms cubic-bezier(.22,1,.36,1); }
+  .proj[role="button"] { cursor: pointer; }
   .proj:hover img { transform: scale(1.04); }
   .proj-cap { position: absolute; left: 22px; right: 22px; bottom: 22px; color: #fff; display: flex; justify-content: space-between; align-items: end; gap: 16px; z-index: 2; }
   .proj::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.55) 100%); pointer-events: none; z-index: 1; }
@@ -284,6 +285,29 @@
     .contact-h { font-size: 48px; }
     .foot { padding: 24px; }
   }
+
+/* ================= COLOR BLOCKING ================= */
+/*
+  Apply .section--dark or .section--mid to any section element.
+  All 10 CSS tokens are overridden so every child component adapts automatically.
+*/
+.section--dark {
+  background:        #141210;
+  --bg:              #141210;
+  --bg-deep:         #0C0A09;
+  --bg-card:         #1E1A16;
+  --ink:             #F3EAE0;
+  --ink-soft:        rgba(243, 234, 224, 0.85);
+  --ink-mute:        rgba(243, 234, 224, 0.58);
+  --line:            rgba(243, 234, 224, 0.10);
+  --accent:          #D4904E;
+  --accent-2:        #7E9E8E;
+  --ink-on-accent:   #141210;
+  color: var(--ink);
+}
+.section--mid {
+  background: #E2DCD5;
+}
 
 /* ================= CONTACT PAGE ================= */
 .contact-page { padding: 96px 56px 56px; position: relative; }
@@ -464,6 +488,59 @@
   .proj-foot-cta { padding: 56px 24px 32px; }
   .proj-foot-cta .inner { grid-template-columns: 1fr; padding: 36px 24px; }
   .proj-foot-cta h3 { font-size: 30px; }
+}
+
+/* ================= LIGHTBOX ================= */
+.lightbox {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(0, 0, 0, 0.92);
+  display: grid; place-items: center;
+  padding: 24px;
+  cursor: zoom-out;
+  animation: lb-fade 180ms ease both;
+}
+@keyframes lb-fade { from { opacity: 0; } to { opacity: 1; } }
+
+.lb-img-wrap {
+  position: relative;
+  max-width: min(90vw, 1100px);
+  cursor: default;
+  animation: lb-scale 260ms cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes lb-scale { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: none; } }
+
+.lb-img-wrap img {
+  display: block;
+  max-width: min(90vw, 1100px);
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+.lb-cap {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 0 2px;
+}
+.lb-cap strong { font-family: "Fraunces", serif; font-size: 17px; font-weight: 400; font-style: italic; }
+.lb-cap span { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.55; white-space: nowrap; }
+
+.lb-close {
+  position: fixed; top: 24px; right: 24px;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(255, 255, 255, 0.10); color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 15px; display: grid; place-items: center;
+  cursor: pointer; transition: background 200ms;
+  z-index: 201;
+}
+.lb-close:hover { background: rgba(255, 255, 255, 0.22); }
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox, .lb-img-wrap { animation: none; }
 }
 
 /* ================= MOBILE MENU ================= */

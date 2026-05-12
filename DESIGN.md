@@ -205,6 +205,43 @@ To **change spacing rhythm**, edit the section-padding values in `.section`, `.c
 
 ---
 
+## Color blocking
+
+The homepage uses hard-edge alternating section backgrounds — no gradients between sections, just sharp cuts. This creates a rhythm similar to a print editorial layout.
+
+### Classes
+
+| Class | Background | Token direction |
+|---|---|---|
+| (default) | `--bg` (`#F2EDE7` warm off-white) | Light — dark ink |
+| `.section--mid` | `#E2DCD5` (warm gray) | Mid — dark ink |
+| `.section--dark` | `#141210` (warm near-black) | Dark — overrides all 10 tokens to cream ink + amber accent |
+
+Apply these classes to any `<section>` or `<footer>`. **All CSS tokens cascade automatically** — cards, kickers, borders, buttons all flip without any per-component overrides.
+
+### Current homepage rhythm (index.html)
+
+```
+Hero            → section--dark
+Marquee         → accent bg (built-in, unchanged)
+About           → section--mid
+Photography     → (default light)
+Rates           → section--mid
+Video           → section--dark
+IG Feed         → section--mid
+Contact Teaser  → section--dark
+Footer          → section--dark
+```
+
+### Rules
+
+- In `.section--dark`, `--accent` flips to `#D4904E` (amber-ochre) — readable on dark bg.
+- In default + `.section--mid`, `--accent` stays `#A55222` (rust) — readable on light bg.
+- **Don't mix tokens** within a single section by hardcoding colors — always use the CSS variables so the block theme cascades correctly.
+- Two consecutive same-type blocks are fine if their content clearly differentiates them (e.g. Contact + Footer both dark).
+
+---
+
 ## What not to add
 
 - A blog/journal section (Lmar would have to write it; don't promise content that doesn't exist)

@@ -5,7 +5,7 @@
 // dropdown stays clean. Use the project page hero for the longer story.
 window.PROJECTS = [
   {
-    id: "tokyo-streets",
+    id: "tokyo",
     title: "Tokyo",
     date: "2024",
     blurb: "Alleys, neon, the slow walks",

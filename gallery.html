@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gallery — Lmars Studio</title>
+<meta name="description" content="Full photography gallery — automotive, street, and landscape work by Lmar Oria. San Antonio." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/styles.css">
+
+<script src="/photos.js" defer></script>
+<script src="/projects.js" defer></script>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="hdr">
+    <a href="/" class="logo">
+      <span class="logo-top"><em>Lmar</em> Oria</span>
+      <span class="logo-bot">Photography · Est. 2025</span>
+    </a>
+    <nav class="nav">
+      <a href="/gallery.html" class="is-active">Gallery</a>
+      <a href="/#video">Video</a>
+      <div class="nav-item">
+        <button type="button" aria-haspopup="true">Projects <span class="caret">▾</span></button>
+        <ul class="proj-drop" data-projects-dropdown></ul>
+      </div>
+      <a href="/#rates">Rates</a>
+      <a href="/#about">About</a>
+      <a href="/#feed">Feed</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <a href="/contact.html" class="cta">Get in touch →</a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span class="mt-icon"><span></span></span>
+    </button>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav>
+      <a href="/gallery.html" class="is-active">Gallery</a>
+      <a href="/#video">Video</a>
+      <button type="button" class="m-projects-toggle" aria-expanded="false" aria-controls="mProjects">
+        Projects <span class="m-caret">+</span>
+      </button>
+      <ul class="m-projects" id="mProjects" data-projects-mobile></ul>
+      <a href="/#rates">Rates</a>
+      <a href="/#about">About</a>
+      <a href="/#feed">Feed</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/contact.html" class="m-cta">Get in touch →</a>
+    </nav>
+  </div>
+
+  <!-- GALLERY -->
+  <section class="gallery-page">
+    <div class="gallery-hero reveal">
+      <span class="eyebrow">— Gallery</span>
+      <h1>Selected <em>work.</em></h1>
+      <p>Everything I've shot worth showing. Cars mostly, with the occasional street or landscape that wouldn't leave me alone. Pick a category on the left to filter.</p>
+    </div>
+
+    <div class="gallery-layout">
+      <aside class="gallery-side" id="gallerySide">
+        <div class="gallery-side-label">// Categories</div>
+        <!-- buttons injected by gallery script -->
+      </aside>
+
+      <div>
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- tiles injected by gallery script -->
+        </div>
+        <p class="gallery-count" id="galleryCount"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <span>© 2026 Lmars Studio · Shot in San Antonio</span>
+    <span class="foot-links">
+      <a href="https://instagram.com/lmar.oria">Instagram</a>
+      <a href="mailto:lmaroria@gmail.com">Email</a>
+    </span>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    function init() {
+      if (!window.PHOTOS || !window.PHOTO_CATEGORIES) {
+        // photos.js hasn't loaded yet — retry shortly
+        return setTimeout(init, 50);
+      }
+
+      var side = document.getElementById('gallerySide');
+      var grid = document.getElementById('galleryGrid');
+      var count = document.getElementById('galleryCount');
+      if (!side || !grid) return;
+
+      var active = 'All';
+
+      function photosFor(cat) {
+        return cat === 'All' ? window.PHOTOS : window.PHOTOS.filter(function (p) { return p.category === cat; });
+      }
+
+      function renderSide() {
+        // Remove existing category buttons (keep the label)
+        side.querySelectorAll('button').forEach(function (b) { b.remove(); });
+        window.PHOTO_CATEGORIES.forEach(function (cat) {
+          var n = photosFor(cat).length;
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = (cat === active ? 'is-active' : '');
+          btn.innerHTML = '<span>' + cat + '</span><span class="gs-count">' + n + '</span>';
+          btn.addEventListener('click', function () { active = cat; renderSide(); renderGrid(); });
+          side.appendChild(btn);
+        });
+      }
+
+      function renderGrid() {
+        var photos = photosFor(active);
+        if (photos.length === 0) {
+          grid.innerHTML = '<div class="gallery-empty">Nothing here yet.</div>';
+          count.textContent = '';
+          return;
+        }
+        grid.innerHTML = photos.map(function (p, i) {
+          var delay = i < 6 ? ' reveal-d' + ((i % 5) + 1) : '';
+          return (
+            '<div class="gallery-tile reveal' + delay + '" tabindex="0" role="button"' +
+              ' data-src="' + p.src + '" data-alt="' + (p.alt || '').replace(/"/g, '&quot;') + '">' +
+              '<img src="' + p.src + '" alt="' + (p.alt || '') + '" loading="lazy" />' +
+            '</div>'
+          );
+        }).join('');
+        count.textContent = '// Showing ' + photos.length + ' ' + (photos.length === 1 ? 'frame' : 'frames') + (active === 'All' ? '' : ' in ' + active);
+
+        // Re-trigger reveal observer on the newly inserted tiles
+        if (typeof window.initReveals === 'function') window.initReveals();
+      }
+
+      renderSide();
+      renderGrid();
+
+      // Open lightbox on tile click or Enter/Space
+      grid.addEventListener('click', function (e) {
+        var tile = e.target.closest('.gallery-tile');
+        if (tile) openLightbox(tile.dataset.src, tile.dataset.alt);
+      });
+      grid.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          var tile = e.target.closest('.gallery-tile');
+          if (tile) { e.preventDefault(); openLightbox(tile.dataset.src, tile.dataset.alt); }
+        }
+      });
+    }
+
+    // ── Lightbox ────────────────────────────────────────────────────
+    var activeLb = null;
+
+    function openLightbox(src, alt) {
+      if (activeLb) return;
+
+      activeLb = document.createElement('div');
+      activeLb.className = 'lightbox';
+      activeLb.setAttribute('role', 'dialog');
+      activeLb.setAttribute('aria-modal', 'true');
+      activeLb.setAttribute('aria-label', alt || 'Photo');
+      activeLb.addEventListener('click', closeLightbox);
+
+      var closeBtn = document.createElement('button');
+      closeBtn.className = 'lb-close';
+      closeBtn.setAttribute('aria-label', 'Close');
+      closeBtn.textContent = '✕';
+      closeBtn.addEventListener('click', closeLightbox);
+
+      var wrap = document.createElement('div');
+      wrap.className = 'lb-img-wrap';
+      wrap.addEventListener('click', function (e) { e.stopPropagation(); });
+
+      var img = document.createElement('img');
+      img.src = src;
+      img.alt = alt || '';
+
+      wrap.appendChild(img);
+      activeLb.appendChild(closeBtn);
+      activeLb.appendChild(wrap);
+      document.body.appendChild(activeLb);
+
+      document.addEventListener('keydown', onLbKey);
+    }
+
+    function closeLightbox() {
+      if (activeLb) {
+        document.body.removeChild(activeLb);
+        activeLb = null;
+        document.removeEventListener('keydown', onLbKey);
+      }
+    }
+
+    function onLbKey(e) {
+      if (e.key === 'Escape') closeLightbox();
+    }
+    // ────────────────────────────────────────────────────────────────
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+</body>
+</html>

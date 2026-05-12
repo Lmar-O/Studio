@@ -358,9 +358,7 @@
                 <span className="logo-bot">Photography · Est. 2025</span>
               </a>
               <nav className="nav">
-                <a href="#photography" className="is-active">
-                  Photography
-                </a>
+                <a href="/gallery.html">Gallery</a>
                 <a href="#video">Video</a>
                 <div className="nav-item">
                   <button type="button" aria-haspopup="true">
@@ -391,7 +389,7 @@
             {/* MOBILE MENU */}
             <div className="mobile-menu" id="mobileMenu">
               <nav>
-                <a href="/#photography">Photography</a>
+                <a href="/gallery.html">Gallery</a>
                 <a href="/#video">Video</a>
                 <button
                   type="button"
@@ -540,55 +538,25 @@
                 <h2 className="h2">
                   Selected <em>frames</em>
                 </h2>
-                <a href={D.instagram} className="section-link">
-                  View all →
+                <a href="/gallery.html" className="section-link">
+                  View full gallery →
                 </a>
               </div>
               <div className="work-grid">
-                <div className="proj large reveal" role="button" tabIndex={0} onClick={() => setLightbox({ src: P(2).src, alt: P(2).alt, title: "Mercedes E450", sub: "Automotive · 2025" })} onKeyDown={(e) => e.key === "Enter" && setLightbox({ src: P(2).src, alt: P(2).alt, title: "Mercedes E450", sub: "Automotive · 2025" })}>
+                <div className="proj large reveal" role="button" tabIndex={0} onClick={() => setLightbox({ src: P(2).src, alt: P(2).alt })} onKeyDown={(e) => e.key === "Enter" && setLightbox({ src: P(2).src, alt: P(2).alt })}>
                   <img src={P(2).src} alt={P(2).alt} />
-                  <div className="proj-cap">
-                    <div className="proj-cap-text">
-                      <strong>Mercedes E450</strong>
-                      <span>Automotive · 2025</span>
-                    </div>
-                  </div>
                 </div>
-                <div className="proj reveal reveal-d1" role="button" tabIndex={0} onClick={() => setLightbox({ src: P(1).src, alt: P(1).alt, title: "Porsche GT3", sub: "Automotive · 2025" })} onKeyDown={(e) => e.key === "Enter" && setLightbox({ src: P(1).src, alt: P(1).alt, title: "Porsche GT3", sub: "Automotive · 2025" })}>
+                <div className="proj reveal reveal-d1" role="button" tabIndex={0} onClick={() => setLightbox({ src: P(1).src, alt: P(1).alt })} onKeyDown={(e) => e.key === "Enter" && setLightbox({ src: P(1).src, alt: P(1).alt })}>
                   <img src={P(1).src} alt={P(1).alt} />
-                  <div className="proj-cap">
-                    <div className="proj-cap-text">
-                      <strong>Porsche GT3</strong>
-                      <span>Automotive · 2025</span>
-                    </div>
-                  </div>
                 </div>
-                <div className="proj reveal reveal-d2" role="button" tabIndex={0} onClick={() => setLightbox({ src: P(0).src, alt: P(0).alt, title: "VW Beetle", sub: "Street · 2024" })} onKeyDown={(e) => e.key === "Enter" && setLightbox({ src: P(0).src, alt: P(0).alt, title: "VW Beetle", sub: "Street · 2024" })}>
+                <div className="proj reveal reveal-d2" role="button" tabIndex={0} onClick={() => setLightbox({ src: P(0).src, alt: P(0).alt })} onKeyDown={(e) => e.key === "Enter" && setLightbox({ src: P(0).src, alt: P(0).alt })}>
                   <img src={P(0).src} alt={P(0).alt} />
-                  <div className="proj-cap">
-                    <div className="proj-cap-text">
-                      <strong>VW Beetle</strong>
-                      <span>Street · 2024</span>
-                    </div>
-                  </div>
                 </div>
-                <div className="proj wide reveal reveal-d3" role="button" tabIndex={0} onClick={() => setLightbox({ src: P(3).src, alt: P(3).alt, title: "Tokyo Alleys", sub: "Street · 2024" })} onKeyDown={(e) => e.key === "Enter" && setLightbox({ src: P(3).src, alt: P(3).alt, title: "Tokyo Alleys", sub: "Street · 2024" })}>
+                <div className="proj wide reveal reveal-d3" role="button" tabIndex={0} onClick={() => setLightbox({ src: P(3).src, alt: P(3).alt })} onKeyDown={(e) => e.key === "Enter" && setLightbox({ src: P(3).src, alt: P(3).alt })}>
                   <img src={P(3).src} alt={P(3).alt} />
-                  <div className="proj-cap">
-                    <div className="proj-cap-text">
-                      <strong>Tokyo Alleys</strong>
-                      <span>Street · 2024</span>
-                    </div>
-                  </div>
                 </div>
-                <div className="proj reveal reveal-d4" role="button" tabIndex={0} onClick={() => setLightbox({ src: P(4).src, alt: P(4).alt, title: "Pacifica", sub: "Landscape · 2024" })} onKeyDown={(e) => e.key === "Enter" && setLightbox({ src: P(4).src, alt: P(4).alt, title: "Pacifica", sub: "Landscape · 2024" })}>
+                <div className="proj reveal reveal-d4" role="button" tabIndex={0} onClick={() => setLightbox({ src: P(4).src, alt: P(4).alt })} onKeyDown={(e) => e.key === "Enter" && setLightbox({ src: P(4).src, alt: P(4).alt })}>
                   <img src={P(4).src} alt={P(4).alt} />
-                  <div className="proj-cap">
-                    <div className="proj-cap-text">
-                      <strong>Pacifica</strong>
-                      <span>Landscape · 2024</span>
-                    </div>
-                  </div>
                 </div>
               </div>
             </section>
@@ -811,14 +779,10 @@
 
             {/* LIGHTBOX */}
             {lightbox && (
-              <div className="lightbox" onClick={() => setLightbox(null)} role="dialog" aria-modal="true" aria-label={lightbox.title}>
+              <div className="lightbox" onClick={() => setLightbox(null)} role="dialog" aria-modal="true" aria-label={lightbox.alt}>
                 <button className="lb-close" onClick={() => setLightbox(null)} aria-label="Close">✕</button>
                 <div className="lb-img-wrap" onClick={(e) => e.stopPropagation()}>
                   <img src={lightbox.src} alt={lightbox.alt} />
-                  <div className="lb-cap">
-                    <strong>{lightbox.title}</strong>
-                    <span>{lightbox.sub}</span>
-                  </div>
                 </div>
               </div>
             )}

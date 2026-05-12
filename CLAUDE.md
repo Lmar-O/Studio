@@ -46,10 +46,12 @@ Plain static site. No build step. No framework.
 ```
 /
 ├── index.html              # React-driven homepage
+├── gallery.html            # Full photo gallery (sidebar-filtered by category)
 ├── contact.html            # Static contact page with Netlify Form
 ├── thanks.html             # Post-submit redirect (noindex)
 ├── styles.css              # All shared styles (single source)
 ├── projects.js             # Shared JS: nav dropdown, mobile menu, reveal observer
+├── photos.js               # Master photo list + categories (drives gallery.html)
 ├── photos/                 # Site-wide photo assets (jpg)
 ├── projects/               # Per-project pages, one HTML file each
 │   └── tokyo-streets.html  # Reference template (custom palette override)
@@ -85,10 +87,17 @@ Each project gets a standalone HTML page with its own palette. Pattern:
    - Long edge ≤ 2400px
    - JPG quality ~80
    - Keep file size under ~500KB where possible
-3. **Reference the photo by path:** `<img src="/photos/<name>.jpg" alt="<descriptive alt>">`
+3. **Add an entry to `photos.js`** so it shows up in the gallery:
+   ```js
+   { id: "<slug>", src: "/photos/<name>.jpg", alt: "<descriptive alt>", category: "Automotive" | "Street" | "Landscape", title: "<short title>", date: "<year>" }
+   ```
+   - `category` must match one of the entries in `window.PHOTO_CATEGORIES` exactly (case-sensitive). If you need a new category, add it to that array first.
+   - Order in the array = order in the gallery. Newest at the top is a reasonable default.
 4. Always include `alt` text. Decorative photos can use `alt=""`.
-5. For the home Photography grid, edit `index.html` — find the `<section id="photography">` block.
-6. For project galleries, edit the project's HTML file directly.
+5. **Home page Photography section** is a curated preview only — still hand-edited in `index.html` (find the `<section id="photography">` block). Pick the 5 strongest from `photos.js` to feature there.
+6. **Project galleries** are independent — edit the project's HTML file directly.
+
+The gallery page (`gallery.html`) reads entirely from `photos.js` — no other edits needed for new photos to appear there.
 
 ## Conventions
 

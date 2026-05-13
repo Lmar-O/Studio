@@ -46,8 +46,9 @@ Plain static site. No build step. No framework.
 ```
 /
 ├── index.html              # React-driven homepage
+├── about.html              # About page with bio, specialties, and FAQ accordion
 ├── gallery.html            # Full photo gallery (sidebar-filtered by category)
-├── contact.html            # Static contact page with Netlify Form
+├── contact.html            # Static contact page with Netlify Form + FAQ accordion
 ├── thanks.html             # Post-submit redirect (noindex)
 ├── styles.css              # All shared styles (single source)
 ├── projects.js             # Shared JS: nav dropdown, mobile menu, reveal observer

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /thanks.html
+Disallow: /admin.html
+
+Sitemap: https://lmarsstudio.com/sitemap.xml

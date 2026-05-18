@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Photography Services & Rates | San Antonio | Lmar Oria</title>
+<meta name="description" content="Automotive, portrait, event, and commercial photography packages in San Antonio. Rates start at $150. Book a session with Lmar Oria." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+
+<link rel="canonical" href="https://lmarsstudio.com/services.html" />
+<link rel="stylesheet" href="styles.css">
+<script src="/projects.js" defer></script>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="hdr">
+    <a href="/" class="logo">
+      <span class="logo-top"><em>Lmar</em> Oria</span>
+      <span class="logo-bot">Photography · Est. 2025</span>
+    </a>
+    <nav class="nav">
+      <a href="/gallery.html">Gallery</a>
+      <div class="nav-item">
+        <button type="button" aria-haspopup="true">Projects <span class="caret">▾</span></button>
+        <ul class="proj-drop" data-projects-dropdown></ul>
+      </div>
+      <a href="/services.html" class="is-active">Services</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <div class="hdr-end">
+      <a href="https://instagram.com/lmar.oria" class="nav-ig" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="/contact.html" class="cta">Get in touch →</a>
+    </div>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span class="mt-icon"><span></span></span>
+    </button>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav>
+      <a href="/gallery.html">Gallery</a>
+      <button type="button" class="m-projects-toggle" aria-expanded="false" aria-controls="mProjects">
+        Projects <span class="m-caret">+</span>
+      </button>
+      <ul class="m-projects" id="mProjects" data-projects-mobile></ul>
+      <a href="/services.html" class="is-active">Services</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/contact.html" class="m-cta">Get in touch →</a>
+      <a href="https://instagram.com/lmar.oria" class="m-ig" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+    </nav>
+  </div>
+
+  <!-- SERVICES PAGE -->
+  <section class="services-page">
+    <div class="services-hero">
+      <h1 class="reveal reveal-d1">What I <em>shoot.</em></h1>
+      <p class="reveal reveal-d2">Automotive, portrait, events, and commercial work. Pick a category to see packages and pricing. All rates are starting points. Reach out if you have something specific in mind.</p>
+    </div>
+
+    <div class="services-rates rates-layout reveal reveal-d3">
+      <nav class="rates-side" id="ratesSide">
+        <div class="rates-side-label">Category</div>
+      </nav>
+      <div>
+        <div class="services-img" id="servicesImg"></div>
+        <div id="ratesGrid"></div>
+        <p class="rates-note">All prices are starting rates. Final cost depends on scope, location, and usage. <a href="/contact.html" style="color:var(--accent);border-bottom:1px solid color-mix(in srgb,var(--accent) 40%,transparent);padding-bottom:2px;">Reach out</a> for a custom quote.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT TO EXPECT -->
+  <section class="services-expect">
+    <div class="services-expect-head reveal">
+      <span class="kicker">What to expect</span>
+      <h2 class="h2">Before we <em>shoot.</em></h2>
+    </div>
+    <div class="services-expect-grid" id="servicesExpectGrid"></div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section class="contact-teaser">
+    <div class="contact-teaser-card reveal">
+      <div>
+        <h2>Ready to <em>book?</em></h2>
+        <p>Fill out the contact form with the shoot type, your idea, and preferred dates. I'll get back to you within 1–3 business days.</p>
+      </div>
+      <a href="/contact.html" class="cta">Get in touch →</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq section--mid">
+    <div class="faq-head">
+      <div class="section-head reveal">
+        <span class="kicker">FAQ</span>
+        <h2 class="h2">Frequently Asked <em>Questions.</em></h2>
+        <a href="/contact.html" class="section-link">Still have one? →</a>
+      </div>
+    </div>
+    <div class="faq-grid">
+
+      <details class="faq-item reveal">
+        <summary>How do I book a session?</summary>
+        <div class="faq-body">
+          Fill out the <a href="/contact.html">contact form</a> with the shoot type, your general idea, and preferred dates. I'll reply within 1–3 business days. Once we've aligned on scope and date, a 50% deposit locks it in, with the remaining balance due on the day of the shoot.
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>How many photos will I receive?</summary>
+        <div class="faq-body">
+          Depends on the package: 8 edited images for an Automotive Mini, up to 30 for a Premium session. Every delivered photo is fully edited. I don't hand over unedited raw files or a dump of every frame I took.
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>How long until I get my photos?</summary>
+        <div class="faq-body">
+          Standard turnaround is 5 business days. Some packages include same-week delivery. I'll confirm your exact timeline when we book. I don't rush edits, but I also don't sit on them.
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>How will I receive my photos?</summary>
+        <div class="faq-body">
+          Via a private online gallery link sent to your email. High-res downloads, no watermarks, yours to keep. You can download everything at once or pick individual files.
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>Do you travel outside San Antonio?</summary>
+        <div class="faq-body">
+          Yes. Travel within a reasonable distance of San Antonio is generally worked into the quote. Anything further, like another city or out of state, gets billed at cost: mileage or flights, plus accommodations if it's an overnight. Tell me what you're thinking and I'll put together a number.
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>Can I request a specific editing style?</summary>
+        <div class="faq-body">
+          The portfolio is the best indicator of how I edit. If you have reference shots or a specific look in mind, share them when you reach out and I'll let you know whether it's in range. I won't commit to mimicking another photographer's style wholesale, but I can work toward a tone or mood.
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>What if I need to reschedule or cancel?</summary>
+        <div class="faq-body">
+          Reschedules are free up to 48 hours before the shoot. Cancellations within 48 hours forfeit the deposit, except for genuine emergencies. Illness, a family emergency, or anything truly outside your control: reach out as soon as you know and we will work something out. The same goes for me. If I have to cancel or reschedule for any reason, including illness or an emergency on my end, you get a full refund or priority rebooking, your call.
+        </div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>What's the difference between personal and commercial use?</summary>
+        <div class="faq-body">
+          Personal use covers sharing on social media, printing for yourself, using in a portfolio. Anything non-commercial. Commercial use means the images appear in paid advertising, brand campaigns, editorial placements, or are licensed to a third party. Commercial licensing is scoped separately; reach out to discuss usage, timeline, and budget.
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <span>© 2026 Lmar Oria · Shot in San Antonio</span>
+    <span class="foot-links">
+      <a href="https://instagram.com/lmar.oria">Instagram</a>
+      <a href="mailto:hello@lmarsstudio.com">Email</a>
+    </span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var RATES = [
+    {
+      id: "automotive",
+      label: "Automotive",
+      from: "from $200",
+      packages: [
+        {
+          name: "Mini",
+          price: "$200",
+          priceLabel: "From",
+          bullets: ["1 hour, single location", "8 edited images", "5-day turnaround", "Personal use license"],
+          cta: "Inquire",
+          subject: "Automotive: Mini session"
+        },
+        {
+          name: "Car Session",
+          price: "$400",
+          priceLabel: "From",
+          featured: true,
+          tag: "Most booked",
+          bullets: ["2 hours, golden-hour scheduled", "15–20 edited images", "Up to 2 locations", "Rolling shots available as add-on", "5-day turnaround"],
+          cta: "Book a session",
+          subject: "Automotive: Car session"
+        },
+        {
+          name: "Premium",
+          price: "$700",
+          priceLabel: "From",
+          bullets: ["3+ hours, multi-location", "30 edited images", "Rolling shots included", "Same-week turnaround", "Personal use license"],
+          cta: "Get a quote",
+          subject: "Automotive: Premium"
+        }
+      ],
+      expect: [
+        { title: "Location & light", body: "We'll agree on a spot beforehand. I'll scout it if I can and schedule around the light. Golden hour is usually worth the wait." },
+        { title: "Prep call", body: "A quick message or call before the shoot to align on the look, specific angles you want, and logistics. More context upfront means less guessing on the day." },
+        { title: "Show up clean", body: "Detail the car before we shoot. Dust, water spots, and fingerprints show up in photos and add editing time. It makes a real difference." },
+        { title: "Plates & legality", body: "If your car doesn't have plates, isn't street-legal, or has modifications that draw attention, that's on you. I'm not responsible for any stops, citations, or interactions with law enforcement during the shoot.", warning: true }
+      ]
+    },
+    {
+      id: "portrait",
+      label: "Portrait",
+      from: "from $150",
+      packages: [
+        {
+          name: "Headshot",
+          price: "$150",
+          priceLabel: "From",
+          bullets: ["30 min, single backdrop or location", "5 edited images", "3-day turnaround", "Personal use license"],
+          cta: "Inquire",
+          subject: "Portrait: Headshot"
+        },
+        {
+          name: "Standard",
+          price: "$300",
+          priceLabel: "From",
+          featured: true,
+          tag: "Most booked",
+          bullets: ["1 hour, 1–2 outfit changes", "12–15 edited images", "Indoor or outdoor", "5-day turnaround"],
+          cta: "Book a session",
+          subject: "Portrait: Standard"
+        },
+        {
+          name: "Premium",
+          price: "$500",
+          priceLabel: "From",
+          bullets: ["2 hours, multiple looks", "25 edited images", "Up to 2 locations", "Personal branding usage included"],
+          cta: "Get a quote",
+          subject: "Portrait: Premium"
+        }
+      ],
+      expect: [
+        { title: "Location & timing", body: "We'll lock in a spot and schedule around the light. Outdoor shoots work best in the hour before sunset. I can suggest locations if you're not sure." },
+        { title: "Prep call", body: "A short call or message to talk through wardrobe, vibe, and any references you have. Walk in with a plan and we'll make the most of the time." },
+        { title: "What to bring", body: "Outfit changes, accessories, any props. The more prepared you are, the more we can cover. Send reference shots ahead of time if you have them." }
+      ]
+    },
+    {
+      id: "events",
+      label: "Events",
+      from: "from $250/hr",
+      packages: [
+        {
+          name: "Hourly",
+          price: "$250",
+          priceLabel: "Per hour",
+          bullets: ["2 hour minimum", "20 edited images per hour", "Quick-turn previews available", "Personal use license"],
+          cta: "Inquire",
+          subject: "Events: Hourly"
+        },
+        {
+          name: "Half Day",
+          price: "$800",
+          priceLabel: "Up to 4 hrs",
+          featured: true,
+          tag: "Most booked",
+          bullets: ["Up to 4 hours of coverage", "60+ edited images", "Same-week turnaround", "Brand usage included"],
+          cta: "Book coverage",
+          subject: "Events: Half day"
+        },
+        {
+          name: "Full Day / Retainer",
+          price: "By inquiry",
+          priceLabel: "Project",
+          bullets: ["Full-day events or activations", "Monthly content retainers", "Commercial usage included", "Same-week turnaround"],
+          cta: "Get a quote",
+          subject: "Events: Full day / retainer"
+        }
+      ],
+      expect: [
+        { title: "Arrive early", body: "I'll get there before things kick off to scout the space and figure out coverage. No scrambling once the event starts." },
+        { title: "Share the rundown", body: "Send your schedule and flag any key moments beforehand. The more I know going in, the less we have to worry about on the day." },
+        { title: "Turnaround", body: "Expect previews within a day or two and the full gallery shortly after, depending on the package. Exact timeline confirmed when we book." }
+      ]
+    },
+    {
+      id: "business",
+      label: "Business & Commercial",
+      from: "by inquiry",
+      packages: [
+        {
+          name: "Business & Commercial",
+          price: "By inquiry",
+          priceLabel: "Project",
+          bullets: ["Tailored to your scope and timeline", "Photo deliverables", "Commercial usage included", "Retainers available for recurring work"],
+          cta: "Start a conversation",
+          subject: "Business & Commercial inquiry"
+        }
+      ],
+      expect: [
+        { title: "Scoping call", body: "We start with a call to nail down deliverables, usage rights, timeline, and budget before anything is confirmed. No surprises on either side." },
+        { title: "Pre-production", body: "Location, creative direction, and logistics get locked in before the shoot date. If you have a shot list or brand guidelines, share them early." },
+        { title: "Contract & licensing", body: "A contract covering scope, usage, and deliverables is in place before we start. Commercial usage is included by default for business work." }
+      ]
+    }
+  ];
+
+  var IMAGES = {
+    automotive: "photos/DSC05137.jpg",
+    portrait:   "photos/DSC09367-2.jpg",
+    events:     "photos/DSC08581.jpg",
+    business:   "photos/DSC05466-2.jpg"
+  };
+
+  var IMAGE_ALTS = {
+    automotive: "Porsche GT3 car shoot",
+    portrait:   "Portrait session landscape",
+    events:     "Event and street photography",
+    business:   "Commercial automotive photography"
+  };
+
+  var active     = RATES[0].id;
+  var sideEl     = document.getElementById("ratesSide");
+  var imgEl      = document.getElementById("servicesImg");
+  var gridEl     = document.getElementById("ratesGrid");
+  var expectEl   = document.getElementById("servicesExpectGrid");
+
+  function renderSide() {
+    sideEl.innerHTML = '<div class="rates-side-label">Category</div>';
+    RATES.forEach(function (r) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = r.id === active ? "is-active" : "";
+      btn.dataset.id = r.id;
+      btn.innerHTML = r.label + ' <span class="rs-from">' + r.from + "</span>";
+      btn.addEventListener("click", function () { setActive(r.id); });
+      sideEl.appendChild(btn);
+    });
+  }
+
+  function renderImages() {
+    imgEl.innerHTML = "";
+    RATES.forEach(function (r) {
+      var img = document.createElement("img");
+      img.src = IMAGES[r.id];
+      img.alt = IMAGE_ALTS[r.id];
+      img.dataset.cat = r.id;
+      img.className = r.id === active ? "is-active" : "";
+      imgEl.appendChild(img);
+    });
+  }
+
+  function renderCards() {
+    var r = RATES.find(function (x) { return x.id === active; });
+    gridEl.className = "rates-grid" + (r.packages.length === 1 ? " is-solo" : "");
+    gridEl.innerHTML = "";
+    r.packages.forEach(function (pkg, i) {
+      var card = document.createElement("div");
+      card.className = "rate-card" + (pkg.featured ? " is-featured" : "");
+      card.style.animationDelay = (i * 100) + "ms";
+      var tag = pkg.tag ? '<div class="rate-tag">' + pkg.tag + "</div>" : "";
+      var bullets = pkg.bullets.map(function (b) { return "<li>" + b + "</li>"; }).join("");
+      card.innerHTML =
+        tag +
+        '<div class="rate-name">' + pkg.name + "</div>" +
+        '<div class="rate-price"><small>' + pkg.priceLabel + "</small>" + pkg.price + "</div>" +
+        '<ul class="rate-list">' + bullets + "</ul>" +
+        '<div class="rate-cta"><a href="/contact.html?subject=' + encodeURIComponent(pkg.subject) + '">' +
+        pkg.cta + " →</a></div>";
+      gridEl.appendChild(card);
+    });
+  }
+
+  function renderExpect() {
+    var r = RATES.find(function (x) { return x.id === active; });
+    expectEl.innerHTML = "";
+    r.expect.forEach(function (item) {
+      var el = document.createElement("div");
+      el.className = "services-expect-item" + (item.warning ? " is-warning" : "");
+      el.innerHTML = "<h4>" + item.title + "</h4><p>" + item.body + "</p>";
+      expectEl.appendChild(el);
+    });
+  }
+
+  function setActive(id) {
+    active = id;
+    sideEl.querySelectorAll("button").forEach(function (btn) {
+      btn.className = btn.dataset.id === id ? "is-active" : "";
+    });
+    imgEl.querySelectorAll("img").forEach(function (img) {
+      img.className = img.dataset.cat === id ? "is-active" : "";
+    });
+    renderCards();
+    renderExpect();
+  }
+
+  renderSide();
+  renderImages();
+  renderCards();
+  renderExpect();
+})();
+</script>
+</body>
+</html>

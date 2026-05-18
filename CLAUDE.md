@@ -41,18 +41,48 @@ Plain static site. No build step. No framework.
 - **Instagram feed:** behold.so (free tier; feed ID hardcoded in `index.html`)
 - **Fonts:** Google Fonts — Inter (UI), Fraunces (display serif), JetBrains Mono (mono accents)
 
+## Supabase (gallery backend)
+
+The gallery is backed by a Supabase project. Credentials are embedded in `gallery.html` and `admin.html` (anon public key — read-only for gallery visitors, write allowed for admin uploads).
+
+- **Project:** `lmars-studio` (id: `yqjosmrnasjmlibxpnzj`, region: us-east-1)
+- **URL:** `https://yqjosmrnasjmlibxpnzj.supabase.co`
+- **`photos` table schema:**
+  - `id` uuid pk
+  - `src` text — public URL of the image
+  - `alt` text — descriptive alt text
+  - `category` text — one of Automotive, Portrait, Street, Landscape, Events
+  - `title` text
+  - `date` text — year string e.g. `"2026"`
+  - `sort_order` integer — lower = shown first; defaults to 0
+  - `created_at` timestamptz
+- **Storage bucket:** `gallery` (public, 10MB max, images only)
+- **RLS:** public read, anon insert + delete (admin page relies on anon key; password gate is client-side JS only)
+
+### Admin page
+
+`/admin.html` is a password-protected single-page admin UI. It is:
+
+- **Not indexed** (`noindex, nofollow` meta + `Disallow: /admin.html` in `robots.txt`)
+- **Password protected** client-side (`ADMIN_PASSWORD` constant in the inline script — change it there)
+- **Default password:** `lmars2026` — change this before going live or if shared
+
+The admin page lets you upload photos to Storage, insert rows into `photos`, and delete both.
+
 ## File structure
 
 ```
 /
 ├── index.html              # React-driven homepage
 ├── about.html              # About page with bio, specialties, and FAQ accordion
-├── gallery.html            # Full photo gallery (sidebar-filtered by category)
+├── gallery.html            # Full photo gallery (sidebar-filtered by category; fetches from Supabase)
 ├── contact.html            # Static contact page with Netlify Form + FAQ accordion
+├── services.html           # Services & rates page (vanilla JS, category image switcher + FAQ)
 ├── thanks.html             # Post-submit redirect (noindex)
+├── admin.html              # Password-protected admin panel for gallery management (noindex)
 ├── styles.css              # All shared styles (single source)
 ├── projects.js             # Shared JS: nav dropdown, mobile menu, reveal observer
-├── photos.js               # Master photo list + categories (drives gallery.html)
+├── photos.js               # Legacy photo list (kept for reference; gallery now reads from Supabase)
 ├── photos/                 # Site-wide photo assets (jpg)
 ├── projects/               # Per-project pages, one HTML file each
 │   └── tokyo-streets.html  # Reference template (custom palette override)
@@ -83,22 +113,41 @@ Each project gets a standalone HTML page with its own palette. Pattern:
 
 ## How to add new photos
 
-1. Drop the optimized JPG into `/photos/`. Use the original filename if it carries semantic info (e.g. `DSC05137.jpg`), otherwise rename to something descriptive: `gt3-sunset-2025.jpg`.
-2. **Optimize before committing:**
-   - Long edge ≤ 2400px
-   - JPG quality ~80
-   - Keep file size under ~500KB where possible
-3. **Add an entry to `photos.js`** so it shows up in the gallery:
-   ```js
-   { id: "<slug>", src: "/photos/<name>.jpg", alt: "<descriptive alt>", category: "Automotive" | "Street" | "Landscape", title: "<short title>", date: "<year>" }
-   ```
-   - `category` must match one of the entries in `window.PHOTO_CATEGORIES` exactly (case-sensitive). If you need a new category, add it to that array first.
-   - Order in the array = order in the gallery. Newest at the top is a reasonable default.
-4. Always include `alt` text. Decorative photos can use `alt=""`.
-5. **Home page Photography section** is a curated preview only — still hand-edited in `index.html` (find the `<section id="photography">` block). Pick the 5 strongest from `photos.js` to feature there.
-6. **Project galleries** are independent — edit the project's HTML file directly.
+**The gallery is now backed by Supabase.** Photos are stored in the `photos` table and served via the Supabase REST API — no code deploy needed to add or remove photos.
 
-The gallery page (`gallery.html`) reads entirely from `photos.js` — no other edits needed for new photos to appear there.
+### Using the admin panel (preferred)
+
+1. Go to `/admin.html` and enter the admin password.
+2. Drag and drop an image (or click to select). Fill in alt text, category, title, year, and sort order.
+3. Click Upload. The photo appears in the gallery immediately.
+4. The Manage section shows all current photos with a Delete button per photo.
+
+### Manual upload (code path)
+
+1. Upload the optimized JPG to Supabase Storage bucket `gallery` (or host it elsewhere and use that URL).
+2. Insert a row into the `photos` table:
+   ```sql
+   insert into public.photos (src, alt, category, title, date, sort_order)
+   values ('<public-url>', '<alt text>', 'Automotive', '<title>', '2026', 10);
+   ```
+   - `category` must be one of: `Automotive`, `Portrait`, `Street`, `Landscape`, `Events`
+   - Lower `sort_order` = appears first in the gallery. Leave at `0` to float to the top.
+3. The gallery page reads from Supabase at load time — no redeploy needed.
+
+### Image optimization before uploading
+
+- Long edge ≤ 2400px
+- JPG quality ~80
+- File size under ~500KB where possible
+
+### Home page and project galleries
+
+- **Home page Photography section** is still hand-edited in `index.html` (find `<section id="photography">`). Pick the 5 strongest to feature there.
+- **Project galleries** are independent — edit the project's HTML file directly.
+
+### Legacy `photos.js`
+
+`photos.js` is kept for reference only. The 6 photos it defined were pre-seeded into Supabase at migration time (sort_orders 10–60). Do not rely on `photos.js` for gallery content going forward.
 
 ## Conventions
 

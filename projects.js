@@ -37,7 +37,7 @@ window.PROJECTS = [
           '</li>'
         );
       }).join('') + (window.PROJECTS.length === 0
-        ? '<li class="proj-drop-empty">No projects yet — check back soon.</li>'
+        ? '<li class="proj-drop-empty">No projects yet. Check back soon.</li>'
         : '');
     });
 

@@ -3,16 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Gallery — Lmars Studio</title>
-<meta name="description" content="Full photography gallery — automotive, street, and landscape work by Lmar Oria. San Antonio." />
+<title>Photography Gallery | San Antonio | Lmar Oria</title>
+<meta name="description" content="Browse the full photography portfolio of San Antonio photographer Lmar Oria. Automotive, street, landscape, and portrait work." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 
+<link rel="canonical" href="https://lmarsstudio.com/gallery.html" />
 <link rel="stylesheet" href="/styles.css">
 
-<script src="/photos.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="/projects.js" defer></script>
 </head>
 <body>
@@ -26,17 +27,21 @@
     </a>
     <nav class="nav">
       <a href="/gallery.html" class="is-active">Gallery</a>
-      <a href="/#video">Video</a>
+      <!-- <a href="/#video">Video</a> -->
       <div class="nav-item">
         <button type="button" aria-haspopup="true">Projects <span class="caret">▾</span></button>
         <ul class="proj-drop" data-projects-dropdown></ul>
       </div>
-      <a href="/#rates">Rates</a>
+      <a href="/services.html">Services</a>
       <a href="/about.html">About</a>
-      <a href="/#feed">Feed</a>
       <a href="/contact.html">Contact</a>
     </nav>
-    <a href="/contact.html" class="cta">Get in touch →</a>
+    <div class="hdr-end">
+      <a href="https://instagram.com/lmar.oria" class="nav-ig" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="/contact.html" class="cta">Get in touch →</a>
+    </div>
     <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
       <span class="mt-icon"><span></span></span>
     </button>
@@ -46,23 +51,24 @@
   <div class="mobile-menu" id="mobileMenu">
     <nav>
       <a href="/gallery.html" class="is-active">Gallery</a>
-      <a href="/#video">Video</a>
+      <!-- <a href="/#video">Video</a> -->
       <button type="button" class="m-projects-toggle" aria-expanded="false" aria-controls="mProjects">
         Projects <span class="m-caret">+</span>
       </button>
       <ul class="m-projects" id="mProjects" data-projects-mobile></ul>
-      <a href="/#rates">Rates</a>
+      <a href="/services.html">Services</a>
       <a href="/about.html">About</a>
-      <a href="/#feed">Feed</a>
       <a href="/contact.html">Contact</a>
       <a href="/contact.html" class="m-cta">Get in touch →</a>
+      <a href="https://instagram.com/lmar.oria" class="m-ig" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
     </nav>
   </div>
 
   <!-- GALLERY -->
   <section class="gallery-page">
     <div class="gallery-hero reveal">
-      <span class="eyebrow">— Gallery</span>
       <h1>Selected <em>work.</em></h1>
       <p>Everything I've shot worth showing. Cars mostly, with the occasional street or landscape that wouldn't leave me alone. Pick a category on the left to filter.</p>
     </div>
@@ -87,76 +93,91 @@
     <span>© 2026 Lmars Studio · Shot in San Antonio</span>
     <span class="foot-links">
       <a href="https://instagram.com/lmar.oria">Instagram</a>
-      <a href="mailto:lmaroria@gmail.com">Email</a>
+      <a href="mailto:hello@lmarsstudio.com">Email</a>
     </span>
   </footer>
 </div>
 
 <script>
-  (function () {
-    function init() {
-      if (!window.PHOTOS || !window.PHOTO_CATEGORIES) {
-        // photos.js hasn't loaded yet — retry shortly
-        return setTimeout(init, 50);
-      }
+(function () {
+  var SUPABASE_URL = 'https://yqjosmrnasjmlibxpnzj.supabase.co';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlxam9zbXJuYXNqbWxpYnhwbnpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5MzUyODYsImV4cCI6MjA5NDUxMTI4Nn0.Ax7YNMhYt6pgIAUdqAtabmytBKN8ylNPYEhlRsappaY';
+  var CAT_ORDER = ['Portrait', 'Automotive', 'Street', 'Landscape', 'Events'];
 
-      var side = document.getElementById('gallerySide');
-      var grid = document.getElementById('galleryGrid');
-      var count = document.getElementById('galleryCount');
-      if (!side || !grid) return;
+  var side  = document.getElementById('gallerySide');
+  var grid  = document.getElementById('galleryGrid');
+  var count = document.getElementById('galleryCount');
+  var active = 'All';
+  var PHOTOS = [];
+  var CATS   = ['All'];
 
-      var active = 'All';
+  // Loading skeletons
+  grid.innerHTML = [1,2,3,4,5,6].map(function () {
+    return '<div class="gallery-tile ig-tile--skeleton"></div>';
+  }).join('');
 
-      function photosFor(cat) {
-        return cat === 'All' ? window.PHOTOS : window.PHOTOS.filter(function (p) { return p.category === cat; });
-      }
-
-      function renderSide() {
-        // Remove existing category buttons (keep the label)
-        side.querySelectorAll('button').forEach(function (b) { b.remove(); });
-        window.PHOTO_CATEGORIES.forEach(function (cat) {
-          var n = photosFor(cat).length;
-          var btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = (cat === active ? 'is-active' : '');
-          btn.innerHTML = '<span>' + cat + '</span><span class="gs-count">' + n + '</span>';
-          btn.addEventListener('click', function () { active = cat; renderSide(); renderGrid(); });
-          side.appendChild(btn);
-        });
-      }
-
-      function renderGrid() {
-        var photos = photosFor(active);
-        if (photos.length === 0) {
-          grid.innerHTML = '<div class="gallery-empty">Nothing here yet.</div>';
-          count.textContent = '';
-          return;
-        }
-        grid.innerHTML = photos.map(function (p, i) {
-          var delay = i < 6 ? ' reveal-d' + ((i % 5) + 1) : '';
-          return (
-            '<div class="gallery-tile reveal' + delay + '" data-lightbox tabindex="0" role="button"' +
-              ' data-src="' + p.src + '" data-alt="' + (p.alt || '').replace(/"/g, '&quot;') + '">' +
-              '<img src="' + p.src + '" alt="' + (p.alt || '') + '" loading="lazy" />' +
-            '</div>'
-          );
-        }).join('');
-        count.textContent = 'Showing ' + photos.length + ' ' + (photos.length === 1 ? 'frame' : 'frames') + (active === 'All' ? '' : ' in ' + active);
-
-        // Re-trigger reveal observer on the newly inserted tiles
-        if (typeof window.initReveals === 'function') window.initReveals();
-      }
-
+  var sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  sb.from('photos').select('*').order('sort_order').order('created_at', { ascending: false })
+    .then(function (res) {
+      PHOTOS = res.data || [];
+      var found = {};
+      PHOTOS.forEach(function (p) {
+        effectiveTags(p).forEach(function (t) { found[t] = true; });
+      });
+      CATS = ['All'].concat(
+        CAT_ORDER.filter(function (c) { return found[c]; }).concat(
+          Object.keys(found).filter(function (c) { return CAT_ORDER.indexOf(c) === -1; })
+        )
+      );
       renderSide();
       renderGrid();
-    }
+    })
+    .catch(function () {
+      grid.innerHTML = '<div class="gallery-empty">Could not load photos. Try refreshing.</div>';
+    });
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
-    } else {
-      init();
+  function effectiveTags(p) {
+    return (p.tags && p.tags.length) ? p.tags : [p.category];
+  }
+
+  function photosFor(cat) {
+    return cat === 'All' ? PHOTOS : PHOTOS.filter(function (p) {
+      return effectiveTags(p).indexOf(cat) !== -1;
+    });
+  }
+
+  function renderSide() {
+    side.querySelectorAll('button').forEach(function (b) { b.remove(); });
+    CATS.forEach(function (cat) {
+      var n = photosFor(cat).length;
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = cat === active ? 'is-active' : '';
+      btn.innerHTML = '<span>' + cat + '</span><span class="gs-count">' + n + '</span>';
+      btn.addEventListener('click', function () { active = cat; renderSide(); renderGrid(); });
+      side.appendChild(btn);
+    });
+  }
+
+  function renderGrid() {
+    var photos = photosFor(active);
+    if (photos.length === 0) {
+      grid.innerHTML = '<div class="gallery-empty">Nothing here yet.</div>';
+      count.textContent = '';
+      return;
     }
-  })();
+    grid.innerHTML = photos.map(function (p, i) {
+      var delay = i < 6 ? ' reveal-d' + ((i % 5) + 1) : '';
+      return '<div class="gallery-tile reveal' + delay + '" data-lightbox tabindex="0" role="button"' +
+        ' data-src="' + p.src + '" data-alt="' + (p.alt || '').replace(/"/g, '&quot;') + '">' +
+        '<img src="' + p.src + '" alt="' + (p.alt || '') + '" loading="lazy" />' +
+        '</div>';
+    }).join('');
+    count.textContent = 'Showing ' + photos.length + ' ' + (photos.length === 1 ? 'frame' : 'frames') +
+      (active === 'All' ? '' : ' in ' + active);
+    if (typeof window.initReveals === 'function') window.initReveals();
+  }
+})();
 </script>
 </body>
 </html>

@@ -3,20 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lmars Studio — Photography by Lmar Oria</title>
-    <meta
-      name="description"
-      content="Photography & video by Lmar Oria — cars, streets, landscapes. Based in San Antonio."
-    />
+    <title>San Antonio Photographer | Cars, Portraits &amp; Events | Lmar Oria</title>
+    <meta name="description" content="San Antonio photographer specializing in automotive, portrait, and lifestyle photography. Booking shoots now. Based in San Antonio, TX." />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&display=swap"
       rel="stylesheet"
     />
 
+    <link rel="canonical" href="https://lmarsstudio.com/" />
     <link rel="stylesheet" href="styles.css" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Lmars Studio",
+      "description": "San Antonio photographer specializing in automotive, portrait, lifestyle, and event photography.",
+      "url": "https://lmarsstudio.com",
+      "telephone": "",
+      "email": "lmaroria@gmail.com",
+      "image": "https://lmarsstudio.com/photos/DSC05137.jpg",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "San Antonio",
+        "addressRegion": "TX",
+        "addressCountry": "US"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "San Antonio"
+      },
+      "sameAs": [
+        "https://instagram.com/lmar.oria"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Photography Services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automotive Photography", "description": "Car shoots, builds, meets, and rolling shots in San Antonio." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Portrait Photography", "description": "Headshots, personal branding, and portrait sessions in San Antonio." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lifestyle Photography", "description": "Couples, families, and lifestyle sessions in San Antonio." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Event Photography", "description": "Car meets, launches, and event coverage in San Antonio." } }
+        ]
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
@@ -58,7 +92,7 @@
                 "Personal use license",
               ],
               cta: "Inquire",
-              subject: "Automotive — Mini session",
+              subject: "Automotive: Mini session",
             },
             {
               name: "Car Session",
@@ -70,11 +104,11 @@
                 "2 hours, golden-hour scheduled",
                 "15–20 edited images",
                 "Up to 2 locations",
-                "Optional rolling shots add-on",
+                "Rolling shots available as add-on",
                 "5-day turnaround",
               ],
               cta: "Book a session",
-              subject: "Automotive — Car session",
+              subject: "Automotive: Car session",
             },
             {
               name: "Premium",
@@ -88,7 +122,7 @@
                 "Personal use license",
               ],
               cta: "Get a quote",
-              subject: "Automotive — Premium",
+              subject: "Automotive: Premium",
             },
           ],
         },
@@ -109,7 +143,7 @@
                 "Personal use license",
               ],
               cta: "Inquire",
-              subject: "Portrait — Headshot",
+              subject: "Portrait: Headshot",
             },
             {
               name: "Standard",
@@ -124,7 +158,7 @@
                 "5-day turnaround",
               ],
               cta: "Book a session",
-              subject: "Portrait — Standard",
+              subject: "Portrait: Standard",
             },
             {
               name: "Premium",
@@ -137,56 +171,7 @@
                 "Personal branding usage included",
               ],
               cta: "Get a quote",
-              subject: "Portrait — Premium",
-            },
-          ],
-        },
-        {
-          id: "lifestyle",
-          label: "Lifestyle",
-          from: "from $200",
-          blurb: "Couples, families, friend groups, casual shoots.",
-          packages: [
-            {
-              name: "Mini",
-              price: "$200",
-              priceLabel: "From",
-              bullets: [
-                "45 min, single location",
-                "10 edited images",
-                "5-day turnaround",
-                "Personal use license",
-              ],
-              cta: "Inquire",
-              subject: "Lifestyle — Mini",
-            },
-            {
-              name: "Standard",
-              price: "$400",
-              priceLabel: "From",
-              featured: true,
-              tag: "Most booked",
-              bullets: [
-                "1.5 hours, 1–2 locations",
-                "20 edited images",
-                "Couples, family, friends",
-                "5-day turnaround",
-              ],
-              cta: "Book a session",
-              subject: "Lifestyle — Standard",
-            },
-            {
-              name: "Adventure",
-              price: "$700",
-              priceLabel: "From",
-              bullets: [
-                "3+ hours, full day available",
-                "35 edited images",
-                "Travel within Texas included",
-                "Storytelling sequence",
-              ],
-              cta: "Get a quote",
-              subject: "Lifestyle — Adventure",
+              subject: "Portrait: Premium",
             },
           ],
         },
@@ -207,7 +192,7 @@
                 "Personal use license",
               ],
               cta: "Inquire",
-              subject: "Events — Hourly",
+              subject: "Events: Hourly",
             },
             {
               name: "Half Day",
@@ -222,7 +207,7 @@
                 "Brand usage included",
               ],
               cta: "Book coverage",
-              subject: "Events — Half day",
+              subject: "Events: Half day",
             },
             {
               name: "Full Day / Retainer",
@@ -232,10 +217,10 @@
                 "Full-day events or activations",
                 "Monthly content retainers",
                 "Commercial usage included",
-                "Optional video add-on",
+                "Same-week turnaround",
               ],
               cta: "Get a quote",
-              subject: "Events — Full day / retainer",
+              subject: "Events: Full day / retainer",
             },
           ],
         },
@@ -251,7 +236,7 @@
               priceLabel: "Project",
               bullets: [
                 "Tailored to your scope and timeline",
-                "Photo and video deliverables",
+                "Photo deliverables",
                 "Commercial usage included",
                 "Retainers available for recurring work",
               ],
@@ -263,13 +248,11 @@
       ];
 
       const D = {
-        email: "lmaroria@gmail.com",
-        github: "https://github.com/Lmar-O",
-        linkedin: "https://linkedin.com/in/lmaroria",
+        email: "hello@lmarsstudio.com",
         instagram: "https://instagram.com/lmar.oria",
         // tiktok: "https://tiktok.com/@lmar.oria",
         // youtube: "https://youtube.com/@lmar.oria",
-        bio: "Photographer chasing good light around San Antonio. Cars are the obsession — streets and landscapes are everything in between. Branching into video too.",
+        bio: "Photographer chasing good light around San Antonio. Cars are the obsession, streets and landscapes are everything in between.",
         photos: [
           { src: "photos/DSC05077.jpg", alt: "VW Beetle" },
           { src: "photos/DSC05137.jpg", alt: "Porsche GT3" },
@@ -359,21 +342,25 @@
               </a>
               <nav className="nav">
                 <a href="/gallery.html">Gallery</a>
-                <a href="#video">Video</a>
+                {/* <a href="#video">Video</a> */}
                 <div className="nav-item">
                   <button type="button" aria-haspopup="true">
                     Projects <span className="caret">▾</span>
                   </button>
                   <ul className="proj-drop" data-projects-dropdown></ul>
                 </div>
-                <a href="#rates">Rates</a>
+                <a href="/services.html">Services</a>
                 <a href="/about.html">About</a>
-                <a href="#feed">Feed</a>
                 <a href="/contact.html">Contact</a>
               </nav>
-              <a href="/contact.html" className="cta">
-                Get in touch →
-              </a>
+              <div className="hdr-end">
+                <a href={D.instagram} className="nav-ig" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </a>
+                <a href="/contact.html" className="cta">
+                  Get in touch →
+                </a>
+              </div>
               <button
                 className="menu-toggle"
                 aria-label="Menu"
@@ -390,7 +377,7 @@
             <div className="mobile-menu" id="mobileMenu">
               <nav>
                 <a href="/gallery.html">Gallery</a>
-                <a href="/#video">Video</a>
+                {/* <a href="/#video">Video</a> */}
                 <button
                   type="button"
                   className="m-projects-toggle"
@@ -404,12 +391,14 @@
                   id="mProjects"
                   data-projects-mobile
                 ></ul>
-                <a href="/#rates">Rates</a>
+                <a href="/services.html">Services</a>
                 <a href="/about.html">About</a>
-                <a href="/#feed">Feed</a>
                 <a href="/contact.html">Contact</a>
                 <a href="/contact.html" className="m-cta">
                   Get in touch →
+                </a>
+                <a href={D.instagram} className="m-ig" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                 </a>
               </nav>
             </div>
@@ -418,16 +407,11 @@
             <section className="hero section--dark" id="work">
               <div className="hero-text">
                 <div>
-                  <span className="eyebrow">Booking shoots · Spring '26</span>
                   <h1 className="hero-title">
-                    Hi, I'm <em>Lmar</em>.<br />I shoot photo
-                    <br />
-                    &amp; video.
+                    Hi, I'm <em>Lmar</em>.<br />I shoot <em>photos.</em>
                   </h1>
                   <p className="hero-bio">
-                    Based in San Antonio. Cars, streets, and the occasional
-                    landscape that won't sit still. Always chasing good light
-                    and a faster shutter.
+                    i take pics.
                   </p>
                   <div className="hero-row">
                     <a href="#photography" className="pill pill--primary">
@@ -460,13 +444,13 @@
               <div className="marquee-track">
                 {[
                   "Photography",
-                  "Video",
+                  "Portraits",
                   "Automotive",
                   "Street",
                   "Landscape",
                   "San Antonio",
                   "Photography",
-                  "Video",
+                  "Portraits",
                   "Automotive",
                   "Street",
                   "Landscape",
@@ -482,11 +466,11 @@
             {/* ABOUT */}
             <section className="section section--mid" id="about">
               <div className="section-head reveal">
-                <span className="kicker">— About</span>
+                <span className="kicker">About</span>
                 <h2 className="h2">
                   A bit <em>about me</em>
                 </h2>
-                <a href="#contact" className="section-link">
+                <a href="/about.html" className="section-link">
                   Read full bio →
                 </a>
               </div>
@@ -501,7 +485,7 @@
                   </h3>
                   <p>{D.bio}</p>
                   <p>
-                    Always looking for the next shoot — cars, lifestyle,
+                    Always looking for the next shoot. Cars, portraits,
                     editorial. Reach out if you've got something you want
                     photographed.
                   </p>
@@ -510,16 +494,8 @@
                       <h4>Stills</h4>
                       <p>
                         Automotive, street, landscape. Comfortable with natural
-                        light, strobes, and long exposures — happy to figure out
+                        light, strobes, and long exposures. Happy to figure out
                         whatever a shoot needs.
-                      </p>
-                    </div>
-                    <div className="about-card">
-                      <h4>Video</h4>
-                      <p>
-                        Short-form clips and behind-the-scenes for cars and
-                        brands. Building this part of the studio out — let's
-                        collab.
                       </p>
                     </div>
                   </div>
@@ -530,7 +506,7 @@
             {/* PHOTOGRAPHY GRID */}
             <section className="section" id="photography">
               <div className="section-head reveal">
-                <span className="kicker">— Photography</span>
+                <span className="kicker">Photography</span>
                 <h2 className="h2">
                   Selected <em>frames</em>
                 </h2>
@@ -560,7 +536,7 @@
             {/* RATES */}
             <section className="section section--mid" id="rates">
               <div className="section-head reveal">
-                <span className="kicker">— Rates</span>
+                <span className="kicker">Rates</span>
                 <h2 className="h2">
                   Book a <em>shoot</em>
                 </h2>
@@ -631,7 +607,7 @@
               </div>
             </section>
 
-            {/* VIDEO */}
+            {/* VIDEO — commented out until video work is ready
             <section className="section section--dark" id="video">
               <div className="section-head reveal">
                 <span className="kicker">— Video</span>
@@ -669,12 +645,13 @@
                 </a>
               </div>
             </section>
+            */}
 
             {/* IG RAIL */}
             <section className="ig section--mid" id="feed">
               <div className="ig-head">
                 <div className="ig-head-left">
-                  <span className="kicker">— From the feed</span>
+                  <span className="kicker">From the feed</span>
                   <span className="ig-handle">
                     @
                     {feed && feed.profile && feed.profile.username
@@ -738,7 +715,7 @@
                     Got something <em>in mind?</em>
                   </h2>
                   <p>
-                    Shoots, collabs, or just a coffee — head over to the contact
+                    Shoots, collabs, or just a coffee. Head over to the contact
                     page and tell me about it. For business or commercial
                     inquiries, email me directly.
                   </p>

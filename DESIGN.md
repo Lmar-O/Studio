@@ -10,7 +10,7 @@ The site has one job visually: let photography lead. Everything here serves that
 
 - **Warm, calm, deliberate.** Not loud. Not trendy. Reads as personal craft, not corporate studio.
 - **Editorial-leaning** type — large serif display + clean sans body.
-- **Warm off-white backgrounds** — like photo paper or a matte print — with near-black ink and a deep rust accent so photos and type both breathe.
+- **Warm off-white backgrounds** — like photo paper or a matte print — with near-black ink and a vivid burnt-orange accent so photos and type both breathe.
 - **Generous whitespace.** Nothing should feel cramped.
 
 If a change makes the site feel busier, more saturated, or more "designed," it's probably going the wrong way.
@@ -30,7 +30,7 @@ Defined as CSS custom properties in `styles.css` under `:root`. **Use the tokens
 | `--ink-soft`       | `rgba(26, 21, 18, 0.72)`            | Secondary text                                                |
 | `--ink-mute`       | `rgba(26, 21, 18, 0.48)`            | Meta text, labels, dimmed copy                                |
 | `--line`           | `rgba(26, 21, 18, 0.11)`            | Borders, separators                                           |
-| `--accent`         | `#A55222` (deep rust/terracotta)    | CTAs, hover states, highlights, italic display                |
+| `--accent`         | `#C75321` (burnt orange)            | CTAs, hover states, highlights, italic display                |
 | `--accent-2`       | `#5E8C7C` (muted sage)              | Secondary glow on ambient blobs                               |
 | `--ink-on-accent`  | `#FAF8F5`                           | Text color on accent-filled buttons/chips — always set this when overriding `--accent` |
 
@@ -58,7 +58,7 @@ body { background: var(--bg); }
 
 Palette starting points to copy/paste:
 
-- **Darkroom** (reserved for video page) — bg `#141210`, bg-deep `#0C0A09`, bg-card `#1E1A16`, ink `#F3EAE0`, ink-soft `rgba(243,234,224,0.85)`, ink-mute `rgba(243,234,224,0.58)`, line `rgba(243,234,224,0.10)`, accent `#D4904E`, accent-2 `#7E9E8E`, ink-on-accent `#141210`
+- **Darkroom** (reserved for video page) — bg `#141210`, bg-deep `#0C0A09`, bg-card `#1E1A16`, ink `#F3EAE0`, ink-soft `rgba(243,234,224,0.85)`, ink-mute `rgba(243,234,224,0.58)`, line `rgba(243,234,224,0.10)`, accent `#C75321` (same as light), accent-2 `#7E9E8E`, ink-on-accent `#FAF8F5`
 - **Desert** — bg `#2A1F18`, ink `#F0E5D4`, accent `#E8A04C`, accent-2 `#C77B5C`, ink-on-accent `#2A1F18`
 - **Forest** — bg `#1A2620`, ink `#E8EDE3`, accent `#9FBF73`, accent-2 `#D4A57A`, ink-on-accent `#1A2620`
 - **Monochrome** — bg `#1A1A1A`, ink `#F0F0F0`, accent `#F0F0F0`, accent-2 `#888`, ink-on-accent `#1A1A1A`
@@ -217,7 +217,7 @@ The homepage uses hard-edge alternating section backgrounds — no gradients bet
 |---|---|---|
 | (default) | `--bg` (`#F2EDE7` warm off-white) | Light — dark ink |
 | `.section--mid` | `#E2DCD5` (warm gray) | Mid — dark ink |
-| `.section--dark` | `#141210` (warm near-black) | Dark — overrides all 10 tokens to cream ink + amber accent |
+| `.section--dark` | `#141210` (warm near-black) | Dark — overrides ink/bg/line tokens to cream-on-black. **Accent stays brand orange** (`#C75321`) so CTAs read identically across light + dark. |
 
 Apply these classes to any `<section>` or `<footer>`. **All CSS tokens cascade automatically** — cards, kickers, borders, buttons all flip without any per-component overrides.
 
@@ -237,8 +237,8 @@ Footer          → section--dark
 
 ### Rules
 
-- In `.section--dark`, `--accent` flips to `#D4904E` (amber-ochre) — readable on dark bg.
-- In default + `.section--mid`, `--accent` stays `#A55222` (rust) — readable on light bg.
+- In `.section--dark`, `--accent` is **intentionally inherited from `:root`** (`#C75321` burnt orange). Do not override per-section unless a specific project palette requires it — brand consistency wins over per-section tuning.
+- In default + `.section--mid`, `--accent` stays `#C75321` (burnt orange) — readable on light bg.
 - **Don't mix tokens** within a single section by hardcoding colors — always use the CSS variables so the block theme cascades correctly.
 - Two consecutive same-type blocks are fine if their content clearly differentiates them (e.g. Contact + Footer both dark).
 

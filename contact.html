@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Contact — Lmars Studio</title>
-<meta name="description" content="Get in touch with Lmar Oria for photography & video. San Antonio based." />
+<title>Book a Session | San Antonio Photographer | Lmar Oria</title>
+<meta name="description" content="Ready to shoot? Contact San Antonio photographer Lmar Oria for automotive, portrait, lifestyle, and event photography. Rates start at $150." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 
+<link rel="canonical" href="https://lmarsstudio.com/contact.html" />
 <link rel="stylesheet" href="styles.css">
 <script src="/projects.js" defer></script>
 </head>
@@ -24,17 +25,21 @@
     </a>
     <nav class="nav">
       <a href="/gallery.html">Gallery</a>
-      <a href="/#video">Video</a>
+      <!-- <a href="/#video">Video</a> -->
       <div class="nav-item">
         <button type="button" aria-haspopup="true">Projects <span class="caret">▾</span></button>
         <ul class="proj-drop" data-projects-dropdown></ul>
       </div>
-      <a href="/#rates">Rates</a>
+      <a href="/services.html">Services</a>
       <a href="/about.html">About</a>
-      <a href="/#feed">Feed</a>
       <a href="/contact.html" class="is-active">Contact</a>
     </nav>
-    <a href="/contact.html" class="cta">Get in touch →</a>
+    <div class="hdr-end">
+      <a href="https://instagram.com/lmar.oria" class="nav-ig" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="/contact.html" class="cta">Get in touch →</a>
+    </div>
     <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
       <span class="mt-icon"><span></span></span>
     </button>
@@ -44,31 +49,32 @@
   <div class="mobile-menu" id="mobileMenu">
     <nav>
       <a href="/gallery.html">Gallery</a>
-      <a href="/#video">Video</a>
+      <!-- <a href="/#video">Video</a> -->
       <button type="button" class="m-projects-toggle" aria-expanded="false" aria-controls="mProjects">
         Projects <span class="m-caret">+</span>
       </button>
       <ul class="m-projects" id="mProjects" data-projects-mobile></ul>
-      <a href="/#rates">Rates</a>
+      <a href="/services.html">Services</a>
       <a href="/about.html">About</a>
-      <a href="/#feed">Feed</a>
       <a href="/contact.html" class="is-active">Contact</a>
       <a href="/contact.html" class="m-cta">Get in touch →</a>
+      <a href="https://instagram.com/lmar.oria" class="m-ig" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
     </nav>
   </div>
 
   <!-- CONTACT PAGE -->
   <section class="contact-page">
     <div class="contact-hero">
-      <span class="eyebrow">Contact</span>
-      <h1>Let's <em>make something.</em></h1>
-      <p>Tell me what you have in mind — a shoot, a collab, an idea, a question. I usually reply within 1–3 business days. Based in San Antonio, happy to travel for the right project.</p>
+      <h1 class="reveal reveal-d1">Let's <em>make something.</em></h1>
+      <p class="reveal reveal-d2">Tell me what you have in mind: a shoot, a collab, an idea, a question. I usually reply within 1–3 business days. Based in San Antonio, happy to travel for the right project.</p>
     </div>
 
     <div class="contact-grid">
       <!-- FORM -->
       <form
-        class="cf"
+        class="cf reveal reveal-d3"
         name="contact"
         method="POST"
         action="/thanks.html"
@@ -112,7 +118,6 @@
               <option value="" disabled selected>Choose one</option>
               <option>Automotive</option>
               <option>Portrait</option>
-              <option>Lifestyle</option>
               <option>Events</option>
               <option>Other</option>
               <option>Just saying hi</option>
@@ -135,13 +140,13 @@
 
       <!-- SIDEBAR -->
       <aside class="contact-aside">
-        <div class="contact-aside-card is-accent">
+        <div class="contact-aside-card is-accent reveal reveal-d4">
           <h3>Business or commercial?</h3>
           <p><strong>For commercial/editorial inquiries <u>only</u>,</strong> you can contact me directly at my email so we can scope the project properly. This includes timeline, usage rights, deliverables, and budget.</p>
-          <p><a class="email-link" href="mailto:lmaroria@gmail.com?subject=Commercial inquiry">lmaroria@gmail.com</a></p>
+          <p><a class="email-link" href="mailto:hello@lmarsstudio.com?subject=Commercial inquiry">hello@lmarsstudio.com</a></p>
         </div>
 
-        <div class="contact-aside-card">
+        <div class="contact-aside-card reveal reveal-d5">
           <h3>The basics</h3>
           <div class="meta-list">
             <div><span>BASED IN</span>San Antonio, TX</div>
@@ -151,7 +156,7 @@
           </div>
         </div>
 
-        <div class="contact-aside-card">
+        <div class="contact-aside-card reveal reveal-d5">
           <h3>Or find me here</h3>
           <p style="margin-bottom:0">
             <a class="email-link" href="https://instagram.com/lmar.oria">@lmar.oria on Instagram</a>
@@ -165,7 +170,7 @@
   <section class="faq section--mid">
     <div class="faq-head">
       <div class="section-head reveal">
-        <span class="kicker">— FAQ</span>
+        <span class="kicker">FAQ</span>
         <h2 class="h2">Frequently Asked <em>Questions.</em></h2>
         <a href="/about.html" class="section-link">Read more about me →</a>
       </div>
@@ -175,21 +180,21 @@
       <details class="faq-item reveal">
         <summary>How do I book a session?</summary>
         <div class="faq-body">
-          Fill out the form above with the shoot type, your general idea, and preferred dates. I'll reply within 1–3 business days. Once we've aligned on scope and date, a 50% deposit locks it in — the remaining balance is due before the shoot.
+          Fill out the form above with the shoot type, your general idea, and preferred dates. I'll reply within 1–3 business days. Once we've aligned on scope and date, a 50% deposit locks it in, with the remaining balance due on the day of the shoot.
         </div>
       </details>
 
       <details class="faq-item reveal">
         <summary>How many photos will I receive?</summary>
         <div class="faq-body">
-          Depends on the package — 8 edited images for an Automotive Mini up to 30 for a Premium session. Every delivered photo is fully edited. I don't hand over unedited raw files or a dump of every frame I took.
+          Depends on the package: 8 edited images for an Automotive Mini, up to 30 for a Premium session. Every delivered photo is fully edited. I don't hand over unedited raw files or a dump of every frame I took.
         </div>
       </details>
 
       <details class="faq-item reveal">
         <summary>How long until I get my photos?</summary>
         <div class="faq-body">
-          Standard turnaround is 5 business days. Some packages include same-week delivery. I'll confirm your exact timeline when we book — I don't rush edits, but I also don't sit on them.
+          Standard turnaround is 5 business days. Some packages include same-week delivery. I'll confirm your exact timeline when we book. I don't rush edits, but I also don't sit on them.
         </div>
       </details>
 
@@ -203,35 +208,28 @@
       <details class="faq-item reveal">
         <summary>Do you travel outside San Antonio?</summary>
         <div class="faq-body">
-          Yes. Travel within a reasonable distance of San Antonio is generally worked into the quote. Anything further — other cities, out-of-state — gets billed at cost: mileage or flights, plus accommodations if it's an overnight. Tell me what you're thinking and I'll put together a number.
+          Yes. Travel within a reasonable distance of San Antonio is generally worked into the quote. Anything further, like another city or out of state, gets billed at cost: mileage or flights, plus accommodations if it's an overnight. Tell me what you're thinking and I'll put together a number.
         </div>
       </details>
 
       <details class="faq-item reveal">
         <summary>Can I request a specific editing style?</summary>
         <div class="faq-body">
-          The portfolio is the best indicator of how I edit. If you have reference shots or a specific look in mind, share them when you reach out — I'll tell you whether it's in range. I won't commit to mimicking another photographer's style wholesale, but I can work toward a tone or mood.
+          The portfolio is the best indicator of how I edit. If you have reference shots or a specific look in mind, share them when you reach out and I'll let you know whether it's in range. I won't commit to mimicking another photographer's style wholesale, but I can work toward a tone or mood.
         </div>
       </details>
 
       <details class="faq-item reveal">
         <summary>What if I need to reschedule or cancel?</summary>
         <div class="faq-body">
-          Reschedules are free up to 48 hours before the shoot — life happens. Cancellations within 48 hours forfeit the deposit. If the shoot gets cancelled on my end for any reason, you get a full refund or priority rebooking.
+          Reschedules are free up to 48 hours before the shoot. Cancellations within 48 hours forfeit the deposit, except for genuine emergencies. Illness, a family emergency, or anything truly outside your control: reach out as soon as you know and we will work something out. The same goes for me. If I have to cancel or reschedule for any reason, including illness or an emergency on my end, you get a full refund or priority rebooking, your call.
         </div>
       </details>
 
       <details class="faq-item reveal">
         <summary>What's the difference between personal and commercial use?</summary>
         <div class="faq-body">
-          Personal use covers sharing on social media, printing for yourself, using in a portfolio — anything non-commercial. Commercial use means the images appear in paid advertising, brand campaigns, editorial placements, or are licensed to a third party. Commercial licensing is scoped separately; reach out to discuss usage, timeline, and budget.
-        </div>
-      </details>
-
-      <details class="faq-item reveal">
-        <summary>Do you shoot video too?</summary>
-        <div class="faq-body">
-          Yes — short-form clips and BTS content for cars and brands. This side of the studio is still growing, so I'm taking on projects selectively while I build the reel. Rates are flexible. Reach out with what you're thinking and let's see if it's a fit.
+          Personal use covers sharing on social media, printing for yourself, using in a portfolio. Anything non-commercial. Commercial use means the images appear in paid advertising, brand campaigns, editorial placements, or are licensed to a third party. Commercial licensing is scoped separately; reach out to discuss usage, timeline, and budget.
         </div>
       </details>
 
@@ -240,10 +238,10 @@
 
   <!-- FOOTER -->
   <footer class="foot">
-    <span>© 2026 Lmars Studio · Shot in San Antonio</span>
+    <span>© 2026 Lmar Oria · Shot in San Antonio</span>
     <span class="foot-links">
       <a href="https://instagram.com/lmar.oria">Instagram</a>
-      <a href="mailto:lmaroria@gmail.com">Email</a>
+      <a href="mailto:hello@lmarsstudio.com">Email</a>
     </span>
   </footer>
 </div>
@@ -286,12 +284,12 @@
       .then(function (r) {
         if (!r.ok) throw new Error(r.status);
         status.className = 'cf-status is-ok';
-        status.textContent = 'Got it — I’ll be in touch within 1–3 business days.';
+        status.textContent = ‘Got it. I\’ll be in touch within 1–3 business days.’;
         form.reset();
       })
       .catch(function () {
         status.className = 'cf-status is-err';
-        status.innerHTML = 'Something went wrong. Email me directly at <a class="email-link" href="mailto:lmaroria@gmail.com">lmaroria@gmail.com</a>.';
+        status.innerHTML = 'Something went wrong. Email me directly at <a class="email-link" href="mailto:hello@lmarsstudio.com">hello@lmarsstudio.com</a>.';
       });
     });
   })();
